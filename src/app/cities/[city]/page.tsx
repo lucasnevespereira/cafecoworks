@@ -5,7 +5,7 @@ import cafes from "../../../data/cafes.json";
 import AdBanner from "../../components/AdBanner";
 
 interface PageProps {
-  params: { city: string };
+  params: Promise<{ city: string }>;
 }
 
 // Generate static params for all cities
@@ -18,11 +18,12 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps) {
-  const cityName = params.city
+  const { city } = await params;
+  const cityName = city
     .replace("-", " ")
     .replace(/\b\w/g, (l) => l.toUpperCase());
   const cityCafes = cafes.filter(
-    (cafe) => cafe.city.toLowerCase().replace(" ", "-") === params.city
+    (cafe) => cafe.city.toLowerCase().replace(" ", "-") === city
   );
 
   if (cityCafes.length === 0) {
@@ -42,12 +43,13 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default function CityPage({ params }: PageProps) {
-  const cityName = params.city
+export default async function CityPage({ params }: PageProps) {
+  const { city } = await params;
+  const cityName = city
     .replace("-", " ")
     .replace(/\b\w/g, (l) => l.toUpperCase());
   const cityCafes = cafes.filter(
-    (cafe) => cafe.city.toLowerCase().replace(" ", "-") === params.city
+    (cafe) => cafe.city.toLowerCase().replace(" ", "-") === city
   );
 
   if (cityCafes.length === 0) {
@@ -59,12 +61,12 @@ export default function CityPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-base-100">
-      {/* Minimal Navigation */}
-      <nav className="navbar bg-base-100 border-b border-base-200 px-6 py-4">
+      {/* Coffee Navigation */}
+      <nav className="navbar-coffee px-6 py-4">
         <div className="flex-1">
           <Link
             href="/"
-            className="flex items-center gap-3 text-primary hover:opacity-80 transition-opacity"
+            className="flex items-center gap-3 text-coffee-900 hover:opacity-80 transition-opacity"
           >
             <Image
               src="/logo.png"
@@ -73,7 +75,9 @@ export default function CityPage({ params }: PageProps) {
               height={36}
               className="rounded-lg"
             />
-            <span className="text-2xl font-bold">cafeco.works</span>
+            <span className="text-2xl font-bold logo text-coffee-900">
+              cafeco.works
+            </span>
           </Link>
         </div>
         <div className="flex-none">
@@ -86,56 +90,54 @@ export default function CityPage({ params }: PageProps) {
         </div>
       </nav>
 
-      {/* Breadcrumbs */}
-      <div className="px-6 py-4">
-        <div className="text-sm breadcrumbs">
+      {/* Coffee Breadcrumbs */}
+      <div className="px-6 py-4 bg-coffee-cream">
+        <div className="text-sm breadcrumbs breadcrumbs-coffee">
           <ul>
             <li>
-              <Link href="/" className="text-primary hover:underline">
+              <Link href="/" className="text-coffee-900 hover:underline">
                 Home
               </Link>
             </li>
-            <li className="text-base-content/60">{cityName}</li>
+            <li className="text-coffee-warm">{cityName}</li>
           </ul>
         </div>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 py-8">
-        {/* Clean Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl lg:text-5xl font-bold text-primary mb-6">
+        {/* Coffee Hero Section */}
+        <div className="text-center mb-16 coffee-gradient rounded-3xl p-12">
+          <h1 className="text-4xl lg:text-5xl font-bold text-coffee-900 mb-6 text-display">
             Coworking Cafes in {cityName}
           </h1>
-          <p className="text-xl text-base-content/70 mb-8 leading-relaxed">
+          <p className="text-xl text-coffee-warm mb-8 leading-relaxed">
             Discover {cityCafes.length} amazing workspace
             {cityCafes.length !== 1 ? "s" : ""} perfect for remote work
           </p>
 
-          {/* Clean Stats */}
-          <div className="flex justify-center gap-12 text-center mb-8">
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">
+          {/* Coffee Stats Cards */}
+          <div className="flex justify-center gap-8 text-center">
+            <div className="card-coffee p-6">
+              <div className="text-3xl font-bold text-coffee-900 mb-1">
                 {cityCafes.length}
               </div>
-              <div className="text-sm text-base-content/60 uppercase tracking-wider">
+              <div className="text-sm text-coffee-warm uppercase tracking-wider">
                 Cafes
               </div>
             </div>
-            <div className="w-px bg-base-300"></div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">
+            <div className="card-coffee p-6">
+              <div className="text-3xl font-bold text-coffee-900 mb-1">
                 {cityTags.length}
               </div>
-              <div className="text-sm text-base-content/60 uppercase tracking-wider">
+              <div className="text-sm text-coffee-warm uppercase tracking-wider">
                 Features
               </div>
             </div>
-            <div className="w-px bg-base-300"></div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">
+            <div className="card-coffee p-6">
+              <div className="text-3xl font-bold text-coffee-900 mb-1">
                 {cityCafes.filter((cafe) => cafe.featured).length}
               </div>
-              <div className="text-sm text-base-content/60 uppercase tracking-wider">
+              <div className="text-sm text-coffee-warm uppercase tracking-wider">
                 Featured
               </div>
             </div>
@@ -144,22 +146,19 @@ export default function CityPage({ params }: PageProps) {
 
         {/* Popular Tags */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-primary mb-6 text-center">
+          <h2 className="text-2xl font-bold text-coffee-900 mb-6 text-center text-display">
             Popular Features
           </h2>
           <div className="flex flex-wrap justify-center gap-2">
             {cityTags.slice(0, 12).map((tag) => (
-              <span
-                key={tag}
-                className="badge badge-secondary badge-lg font-medium"
-              >
+              <span key={tag} className="badge-golden badge-lg font-medium">
                 {tag}
               </span>
             ))}
           </div>
         </div>
 
-        {/* Cafes Grid */}
+        {/* Coffee Cafes Grid */}
         <div className="mb-16">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {cityCafes
@@ -168,38 +167,35 @@ export default function CityPage({ params }: PageProps) {
                 <Link
                   key={cafe.id}
                   href={`/places/${cafe.slug}`}
-                  className="group bg-base-100 rounded-3xl overflow-hidden border border-base-200 hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+                  className="card-coffee overflow-hidden hover:-translate-y-2 transition-all duration-300 group"
                 >
-                  <div className="aspect-[4/3] bg-gradient-to-br from-base-200 to-base-300 flex items-center justify-center relative">
+                  <div className="aspect-[4/3] coffee-gradient flex items-center justify-center relative">
                     <div className="text-6xl opacity-30">☕</div>
                     {cafe.featured && (
-                      <div className="absolute top-4 left-4 badge badge-primary badge-sm">
+                      <div className="absolute top-4 left-4 badge-golden badge-sm">
                         Featured
                       </div>
                     )}
                   </div>
 
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-primary mb-3 group-hover:text-accent transition-colors line-clamp-1">
+                    <h3 className="text-xl font-bold text-coffee-900 mb-3 group-hover:text-coffee-700 transition-colors line-clamp-1">
                       {cafe.name}
                     </h3>
-                    <p className="text-base-content/70 text-sm mb-4 line-clamp-2 leading-relaxed">
+                    <p className="text-coffee-warm text-sm mb-4 line-clamp-2 leading-relaxed">
                       {cafe.description}
                     </p>
 
                     <div className="space-y-3">
-                      <div className="text-sm text-base-content/60 flex items-center gap-2">
+                      <div className="text-sm text-coffee-warm flex items-center gap-2">
                         <span className="text-lg">📍</span>
                         <span className="truncate">{cafe.address}</span>
                       </div>
 
-                      {/* Tags */}
+                      {/* Coffee Tags */}
                       <div className="flex flex-wrap gap-1">
                         {cafe.tags.slice(0, 3).map((tag) => (
-                          <span
-                            key={tag}
-                            className="badge badge-outline badge-xs"
-                          >
+                          <span key={tag} className="badge-coffee badge-xs">
                             {tag}
                           </span>
                         ))}
@@ -216,37 +212,37 @@ export default function CityPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Clean Ad Banner */}
+        {/* Ad Banner */}
         <div className="mb-16">
           <AdBanner />
         </div>
 
-        {/* Other Cities */}
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-primary mb-8">
+        {/* Other Cities with Coffee Theme */}
+        <div className="text-center section-coffee-warm rounded-3xl p-12">
+          <h2 className="text-2xl font-bold text-coffee-900 mb-8 text-display">
             Explore Other Cities
           </h2>
           <div className="flex flex-wrap justify-center gap-3">
             {Array.from(new Set(cafes.map((cafe) => cafe.city)))
               .filter(
-                (city) => city.toLowerCase().replace(" ", "-") !== params.city
+                (cityName) => cityName.toLowerCase().replace(" ", "-") !== city
               )
               .slice(0, 8)
-              .map((city) => (
+              .map((cityName) => (
                 <Link
-                  key={city}
-                  href={`/cities/${city.toLowerCase().replace(" ", "-")}`}
-                  className="btn btn-outline btn-sm rounded-full hover:btn-primary transition-colors"
+                  key={cityName}
+                  href={`/cities/${cityName.toLowerCase().replace(" ", "-")}`}
+                  className="btn-coffee btn-sm rounded-full hover:btn-primary transition-colors"
                 >
-                  {city}
+                  {cityName}
                 </Link>
               ))}
           </div>
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-primary text-primary-content py-12 px-6 mt-20">
+      {/* Coffee Footer */}
+      <footer className="footer-coffee text-white py-12 px-6 mt-20">
         <div className="max-w-4xl mx-auto text-center">
           <div className="flex justify-center mb-6">
             <Image
@@ -257,11 +253,13 @@ export default function CityPage({ params }: PageProps) {
               className="rounded-lg opacity-90"
             />
           </div>
-          <h3 className="text-2xl font-bold mb-2">cafeco.works</h3>
-          <p className="text-primary-content/80 mb-4">
+          <h3 className="text-2xl font-bold mb-2 logo text-white">
+            cafeco.works
+          </h3>
+          <p className="text-white/80 mb-4">
             The curated directory for remote workers
           </p>
-          <p className="text-sm text-primary-content/60">
+          <p className="text-sm text-white/60">
             Made with ☕ for the global remote community
           </p>
         </div>

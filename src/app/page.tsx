@@ -10,12 +10,12 @@ const featuredCafes = cafes.filter((cafe) => cafe.featured).slice(0, 3);
 export default function Home() {
   return (
     <div className="min-h-screen bg-base-100">
-      {/* Minimal Header */}
-      <header className="navbar bg-base-100 border-b border-base-200 px-6 py-4">
+      {/* Coffee-themed Header */}
+      <header className="navbar-coffee flex justify-between items-center px-6 py-4">
         <div className="flex-1">
           <Link
             href="/"
-            className="flex items-center gap-3 text-primary hover:opacity-80 transition-opacity"
+            className="flex items-center gap-3 text-coffee-900 hover:opacity-80 transition-opacity"
           >
             <Image
               src="/logo.png"
@@ -24,7 +24,9 @@ export default function Home() {
               height={36}
               className="rounded-lg"
             />
-            <span className="text-2xl font-bold">cafeco.works</span>
+            <span className="text-2xl font-bold logo text-coffee-900">
+              cafeco.works
+            </span>
           </Link>
         </div>
         <div className="flex-none">
@@ -37,18 +39,16 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section - More Minimal */}
-      <section className="py-16 px-6">
+      {/* Hero Section with Coffee Gradient */}
+      <section className="py-16 px-6 coffee-gradient">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl lg:text-6xl font-bold mb-6 text-primary leading-tight">
-            Find Your Perfect
+          <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight text-display">
+            <span className="text-coffee-900">Find Your Perfect</span>
             <br />
-            <span className="text-transparent bg-gradient-to-r from-secondary to-accent bg-clip-text">
-              Coworking Cafe
-            </span>
+            <span className="text-golden-gradient">Coworking Cafe</span>
           </h1>
 
-          <p className="text-xl text-base-content/70 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-coffee-warm mb-12 max-w-2xl mx-auto leading-relaxed">
             Discover curated coworking cafes worldwide. From quiet corners to
             buzzing spaces, find where remote work meets great coffee.
           </p>
@@ -58,29 +58,27 @@ export default function Home() {
             <SearchBar />
           </div>
 
-          {/* Minimal Stats */}
+          {/* Coffee-themed Stats */}
           <div className="flex justify-center gap-12 text-center">
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">
+            <div className="card-coffee p-6">
+              <div className="text-3xl font-bold text-coffee-900 mb-1">
                 {cafes.length}
               </div>
-              <div className="text-sm text-base-content/60 uppercase tracking-wider">
+              <div className="text-sm text-coffee-warm uppercase tracking-wider">
                 Cafes
               </div>
             </div>
-            <div className="w-px bg-base-300"></div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">
+            <div className="card-coffee p-6">
+              <div className="text-3xl font-bold text-coffee-900 mb-1">
                 {cities.length}
               </div>
-              <div className="text-sm text-base-content/60 uppercase tracking-wider">
+              <div className="text-sm text-coffee-warm uppercase tracking-wider">
                 Cities
               </div>
             </div>
-            <div className="w-px bg-base-300"></div>
-            <div>
-              <div className="text-3xl font-bold text-primary mb-1">5+</div>
-              <div className="text-sm text-base-content/60 uppercase tracking-wider">
+            <div className="card-coffee p-6">
+              <div className="text-3xl font-bold text-coffee-900 mb-1">5+</div>
+              <div className="text-sm text-coffee-warm uppercase tracking-wider">
                 Countries
               </div>
             </div>
@@ -88,14 +86,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Cities - Minimal Grid */}
-      <section className="py-16 px-6 bg-base-200/50">
+      {/* Featured Cities with Section Background */}
+      <section className="py-16 px-6 section-coffee-light">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-primary mb-4">
+            <h2 className="text-3xl font-bold text-coffee-900 mb-4 text-display">
               Popular Destinations
             </h2>
-            <p className="text-base-content/60">
+            <p className="text-coffee-warm">
               Explore coworking cafes in these amazing cities
             </p>
           </div>
@@ -105,12 +103,12 @@ export default function Home() {
               <Link
                 key={city}
                 href={`/cities/${city.toLowerCase().replace(" ", "-")}`}
-                className="group bg-base-100 rounded-2xl p-6 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-base-200"
+                className="card-coffee p-6 text-center hover:-translate-y-1 transition-all duration-300 group"
               >
-                <h3 className="font-semibold text-primary text-lg mb-2 group-hover:text-accent transition-colors">
+                <h3 className="font-semibold text-coffee-900 text-lg mb-2 group-hover:text-coffee-700 transition-colors">
                   {city}
                 </h3>
-                <p className="text-sm text-base-content/50">
+                <p className="text-sm text-coffee-warm">
                   {cafes.filter((cafe) => cafe.city === city).length} cafes
                 </p>
               </Link>
@@ -119,14 +117,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Cafes - Clean Cards */}
+      {/* Featured Cafes - Coffee Cards */}
       <section className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-primary mb-4">
+            <h2 className="text-3xl font-bold text-coffee-900 mb-4 text-display">
               Featured Cafes
             </h2>
-            <p className="text-base-content/60">
+            <p className="text-coffee-warm">
               Hand-picked favorites from our community
             </p>
           </div>
@@ -136,36 +134,31 @@ export default function Home() {
               <Link
                 key={cafe.id}
                 href={`/places/${cafe.slug}`}
-                className="group bg-base-100 rounded-3xl overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-base-200"
+                className="card-coffee overflow-hidden hover:-translate-y-2 transition-all duration-300 group"
               >
-                <div className="aspect-[4/3] bg-gradient-to-br from-base-200 to-base-300 flex items-center justify-center">
+                <div className="aspect-[4/3] coffee-gradient flex items-center justify-center">
                   <div className="text-6xl opacity-30">☕</div>
                 </div>
 
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-3">
-                    <h3 className="font-bold text-xl text-primary group-hover:text-accent transition-colors line-clamp-1">
+                    <h3 className="font-bold text-xl text-coffee-900 group-hover:text-coffee-700 transition-colors line-clamp-1">
                       {cafe.name}
                     </h3>
-                    <div className="badge badge-secondary badge-sm">
-                      Featured
-                    </div>
+                    <div className="badge-golden">Featured</div>
                   </div>
 
-                  <p className="text-base-content/70 text-sm mb-4 line-clamp-2 leading-relaxed">
+                  <p className="text-coffee-warm text-sm mb-4 line-clamp-2 leading-relaxed">
                     {cafe.description}
                   </p>
 
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-base-content/60 font-medium">
+                    <span className="text-sm text-coffee-rich font-medium">
                       {cafe.city}, {cafe.country}
                     </span>
                     <div className="flex gap-1">
                       {cafe.tags.slice(0, 2).map((tag) => (
-                        <span
-                          key={tag}
-                          className="badge badge-outline badge-xs"
-                        >
+                        <span key={tag} className="badge-coffee badge-xs">
                           {tag}
                         </span>
                       ))}
@@ -178,13 +171,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Clean Call to Action */}
-      <section className="py-16 px-6 bg-gradient-to-r from-secondary/10 to-accent/10">
+      {/* Coffee Call to Action */}
+      <section className="py-16 px-6 cta-coffee">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-primary mb-4">
+          <h2 className="text-3xl font-bold text-coffee-900 mb-4 text-display">
             Know a Great Coworking Cafe?
           </h2>
-          <p className="text-lg text-base-content/70 mb-8">
+          <p className="text-lg text-coffee-warm mb-8">
             Help fellow remote workers discover amazing workspaces
           </p>
           <Link
@@ -196,8 +189,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Minimal Footer */}
-      <footer className="bg-primary text-primary-content py-12 px-6">
+      {/* Coffee Footer */}
+      <footer className="footer-coffee text-white py-12 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <div className="flex justify-center mb-6">
             <Image
@@ -208,11 +201,13 @@ export default function Home() {
               className="rounded-lg opacity-90"
             />
           </div>
-          <h3 className="text-2xl font-bold mb-2">cafeco.works</h3>
-          <p className="text-primary-content/80 mb-4">
+          <h3 className="text-2xl font-bold mb-2 logo text-white">
+            cafeco.works
+          </h3>
+          <p className="text-white/80 mb-4">
             The curated directory for remote workers
           </p>
-          <p className="text-sm text-primary-content/60">
+          <p className="text-sm text-white/60">
             Made with ☕ for the global remote community
           </p>
         </div>

@@ -61,7 +61,7 @@ export default function SearchBar() {
             ref={inputRef}
             type="text"
             placeholder="Search cafes, cities, or features..."
-            className="input input-bordered w-full pr-12 text-base bg-base-100 border-base-300 focus:border-primary focus:outline-none transition-colors rounded-2xl h-14"
+            className="input input-bordered w-full pr-12 text-base bg-base-100 border-coffee-300 focus:border-coffee-700 focus:outline-none transition-colors rounded-2xl h-14"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onFocus={() => query.length > 1 && setIsOpen(true)}
@@ -94,27 +94,27 @@ export default function SearchBar() {
 
       {/* Clean Search Results */}
       {isOpen && results.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-base-100 shadow-2xl rounded-2xl border border-base-200 z-50 overflow-hidden">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-base-100 shadow-2xl rounded-2xl border border-coffee-200 z-50 overflow-hidden">
           {results.map(({ item }) => (
             <button
               key={item.id}
-              className="w-full p-4 text-left hover:bg-base-200 transition-colors flex items-center gap-4 border-b border-base-200 last:border-b-0"
+              className="w-full p-4 text-left hover:bg-coffee-50 transition-colors flex items-center gap-4 border-b border-coffee-200 last:border-b-0"
               onClick={() => handleSelect(item.slug)}
             >
               <div className="w-10 h-10 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-xl flex items-center justify-center flex-shrink-0">
                 <span className="text-lg">☕</span>
               </div>
               <div className="flex-1 min-w-0">
-                <div className="font-medium text-primary truncate">
+                <div className="font-medium text-coffee-900 truncate">
                   {item.name}
                 </div>
-                <div className="text-sm text-base-content/60 truncate">
+                <div className="text-sm text-coffee-warm truncate">
                   {item.city}, {item.country}
                 </div>
               </div>
               <div className="flex gap-1 flex-wrap">
                 {item.tags.slice(0, 2).map((tag) => (
-                  <span key={tag} className="badge badge-outline badge-xs">
+                  <span key={tag} className="badge-coffee badge-xs">
                     {tag}
                   </span>
                 ))}
@@ -126,14 +126,14 @@ export default function SearchBar() {
 
       {/* No Results */}
       {isOpen && results.length === 0 && query.length > 2 && !isLoading && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-base-100 shadow-2xl rounded-2xl border border-base-200 z-50 p-6 text-center">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-base-100 shadow-2xl rounded-2xl border border-coffee-200 z-50 p-6 text-center">
           <div className="text-4xl mb-2 opacity-50">🔍</div>
-          <div className="text-base-content/60">
+          <div className="text-coffee-warm">
             No cafes found for &ldquo;{query}&rdquo;
           </div>
           <Link
             href="/submit"
-            className="text-sm text-primary hover:underline mt-2 inline-block"
+            className="text-sm text-coffee-900 hover:underline mt-2 inline-block"
           >
             Submit this cafe if you know it
           </Link>

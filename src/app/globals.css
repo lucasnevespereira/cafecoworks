@@ -3,21 +3,142 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  font-family: var(--font-space-grotesk), system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-space-grotesk), Arial, Helvetica, sans-serif;
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.coffee.300');
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.coffee.400');
+}
+
+/* Selection styles */
+::selection {
+  background-color: theme('colors.secondary');
+  color: theme('colors.secondary-content');
+}
+
+/* Custom cafeco Components */
+.logo {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* Custom Button Variants */
+.btn-coffee {
+  @apply bg-transparent border border-coffee-300 text-coffee-700 hover:bg-coffee-50 hover:border-coffee-400 transition-all duration-200 font-medium;
+}
+
+/* Custom Card Variants */
+.card-coffee {
+  @apply bg-base-100 border border-coffee-200 rounded-coffee shadow-coffee hover:shadow-coffee-lg transition-all duration-300;
+}
+
+/* Typography Classes */
+.text-display {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+/* Layout Utilities */
+.container-coffee {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Hero gradient - Coffee themed */
+.hero-gradient {
+  background: linear-gradient(135deg, theme('colors.base-100') 0%, theme('colors.base-200') 100%);
+}
+
+/* Coffee-themed gradients */
+.coffee-gradient {
+  background: linear-gradient(135deg, theme('colors.coffee.50') 0%, theme('colors.cream.100') 50%, theme('colors.golden.50') 100%);
+}
+
+.warm-gradient {
+  background: linear-gradient(135deg, theme('colors.secondary/10') 0%, theme('colors.accent/10') 100%);
+}
+
+/* Coffee text gradient for headers */
+.text-coffee-gradient {
+  background: linear-gradient(135deg, theme('colors.coffee.600') 0%, theme('colors.coffee.800') 50%, theme('colors.coffee.900') 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Golden coffee gradient */
+.text-golden-gradient {
+  background: linear-gradient(135deg, theme('colors.golden.400') 0%, theme('colors.accent') 50%, theme('colors.golden.600') 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Enhanced component styling */
+.navbar-coffee {
+  @apply bg-base-100 border-b border-coffee-200;
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 254, 249, 0.95);
+}
+
+.breadcrumbs-coffee .breadcrumbs > ul > li + *:before {
+  content: "☕";
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  opacity: 0.4;
+}
+
+/* Badge variations */
+.badge-coffee {
+  @apply badge-outline border-coffee-300 text-coffee-700 hover:bg-coffee-100;
+}
+
+.badge-golden {
+  @apply bg-golden-100 border-golden-300 text-golden-800;
+}
+
+/* CTA Section with coffee gradient */
+.cta-coffee {
+  background: linear-gradient(135deg,
+    theme('colors.golden.100') 0%,
+    theme('colors.accent/20') 25%,
+    theme('colors.secondary/20') 50%,
+    theme('colors.coffee.100') 75%,
+    theme('colors.cream.100') 100%
+  );
+}
+
+/* Footer with coffee theme */
+.footer-coffee {
+  background: linear-gradient(135deg, theme('colors.coffee.900') 0%, theme('colors.coffee.800') 100%);
 }
 
 /* Custom utilities */
@@ -34,5 +155,48 @@ body {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  /* Coffee color utilities */
+  .text-coffee-warm {
+    color: theme('colors.coffee.600');
+  }
+
+  .text-coffee-rich {
+    color: theme('colors.coffee.800');
+  }
+
+  .bg-coffee-cream {
+    background-color: theme('colors.cream.100');
+  }
+
+  .border-coffee-light {
+    border-color: theme('colors.coffee.200');
+  }
+
+  /* Coffee section backgrounds */
+  .section-coffee-light {
+    background: linear-gradient(135deg, theme('colors.cream.50') 0%, theme('colors.golden.50') 100%);
+  }
+
+  .section-coffee-warm {
+    background: linear-gradient(135deg, theme('colors.secondary/5') 0%, theme('colors.accent/10') 100%);
+  }
+
+  /* Override any default blue/purple colors */
+  .btn-primary {
+    background-color: theme('colors.coffee.900') !important;
+    border-color: theme('colors.coffee.900') !important;
+    color: white !important;
+  }
+
+  .btn-primary:hover {
+    background-color: theme('colors.coffee.800') !important;
+    border-color: theme('colors.coffee.800') !important;
+  }
+
+  /* Ensure consistent text colors */
+  h1, h2, h3, h4, h5, h6 {
+    color: theme('colors.coffee.900') !important;
   }
 }

@@ -34,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="cafeco">
+    <html lang="en" data-theme="cafeco" suppressHydrationWarning>
       <body
         className={`${spaceGrotesk.variable} antialiased font-[family-name:var(--font-space-grotesk)]`}
       >
