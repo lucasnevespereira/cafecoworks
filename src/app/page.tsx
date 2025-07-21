@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import SearchBar from "./components/SearchBar";
 import cafes from "../data/cafes.json";
@@ -10,42 +9,13 @@ const featuredCafes = cafes.filter((cafe) => cafe.featured).slice(0, 3);
 export default function Home() {
   return (
     <div className="min-h-screen bg-base-100">
-      {/* Coffee-themed Header */}
-      <header className="navbar-coffee flex justify-between items-center px-6 py-4">
-        <div className="flex-1">
-          <Link
-            href="/"
-            className="flex items-center gap-3 text-coffee-900 hover:opacity-80 transition-opacity"
-          >
-            <Image
-              src="/logo.png"
-              alt="cafeco.works"
-              width={36}
-              height={36}
-              className="rounded-lg"
-            />
-            <span className="text-2xl font-bold logo text-coffee-900">
-              cafeco.works
-            </span>
-          </Link>
-        </div>
-        <div className="flex-none">
-          <Link
-            href="/submit"
-            className="btn btn-primary btn-sm font-medium px-6"
-          >
-            Submit Cafe
-          </Link>
-        </div>
-      </header>
-
       {/* Hero Section with Coffee Gradient */}
       <section className="py-16 px-6 coffee-gradient">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight text-display">
             <span className="text-coffee-900">Find Your Perfect</span>
             <br />
-            <span className="text-golden-gradient">Coworking Cafe</span>
+            <span className="text-coffee-brand">Coworking Cafe</span>
           </h1>
 
           <p className="text-xl text-coffee-warm mb-12 max-w-2xl mx-auto leading-relaxed">
@@ -172,7 +142,7 @@ export default function Home() {
       </section>
 
       {/* Coffee Call to Action */}
-      <section className="py-16 px-6 cta-coffee">
+      <section className="py-16 px-6 bg-cream-100">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-coffee-900 mb-4 text-display">
             Know a Great Coworking Cafe?
@@ -188,30 +158,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-
-      {/* Coffee Footer */}
-      <footer className="footer-coffee text-white py-12 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="flex justify-center mb-6">
-            <Image
-              src="/logo.png"
-              alt="cafeco.works"
-              width={48}
-              height={48}
-              className="rounded-lg opacity-90"
-            />
-          </div>
-          <h3 className="text-2xl font-bold mb-2 logo text-white">
-            cafeco.works
-          </h3>
-          <p className="text-white/80 mb-4">
-            The curated directory for remote workers
-          </p>
-          <p className="text-sm text-white/60">
-            Made with ☕ for the global remote community
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }

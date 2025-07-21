@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import cafes from "../../../data/cafes.json";
@@ -61,35 +60,6 @@ export default async function CityPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-base-100">
-      {/* Coffee Navigation */}
-      <nav className="navbar-coffee px-6 py-4">
-        <div className="flex-1">
-          <Link
-            href="/"
-            className="flex items-center gap-3 text-coffee-900 hover:opacity-80 transition-opacity"
-          >
-            <Image
-              src="/logo.png"
-              alt="cafeco.works"
-              width={36}
-              height={36}
-              className="rounded-lg"
-            />
-            <span className="text-2xl font-bold logo text-coffee-900">
-              cafeco.works
-            </span>
-          </Link>
-        </div>
-        <div className="flex-none">
-          <Link
-            href="/submit"
-            className="btn btn-primary btn-sm font-medium px-6"
-          >
-            Submit Cafe
-          </Link>
-        </div>
-      </nav>
-
       {/* Coffee Breadcrumbs */}
       <div className="px-6 py-4 bg-coffee-cream">
         <div className="text-sm breadcrumbs breadcrumbs-coffee">
@@ -218,7 +188,7 @@ export default async function CityPage({ params }: PageProps) {
         </div>
 
         {/* Other Cities with Coffee Theme */}
-        <div className="text-center section-coffee-warm rounded-3xl p-12">
+        <div className="text-center bg-cream-100 rounded-3xl p-12">
           <h2 className="text-2xl font-bold text-coffee-900 mb-8 text-display">
             Explore Other Cities
           </h2>
@@ -240,30 +210,6 @@ export default async function CityPage({ params }: PageProps) {
           </div>
         </div>
       </div>
-
-      {/* Coffee Footer */}
-      <footer className="footer-coffee text-white py-12 px-6 mt-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="flex justify-center mb-6">
-            <Image
-              src="/logo.png"
-              alt="cafeco.works"
-              width={48}
-              height={48}
-              className="rounded-lg opacity-90"
-            />
-          </div>
-          <h3 className="text-2xl font-bold mb-2 logo text-white">
-            cafeco.works
-          </h3>
-          <p className="text-white/80 mb-4">
-            The curated directory for remote workers
-          </p>
-          <p className="text-sm text-white/60">
-            Made with ☕ for the global remote community
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }

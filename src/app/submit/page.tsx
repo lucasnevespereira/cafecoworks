@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
@@ -10,27 +9,6 @@ export const metadata = {
 export default function SubmitPage() {
   return (
     <div className="min-h-screen bg-base-100">
-      {/* Coffee Navigation */}
-      <nav className="navbar-coffee px-6 py-4">
-        <div className="flex-1">
-          <Link
-            href="/"
-            className="flex items-center gap-3 text-coffee-900 hover:opacity-80 transition-opacity"
-          >
-            <Image
-              src="/logo.png"
-              alt="cafeco.works"
-              width={36}
-              height={36}
-              className="rounded-lg"
-            />
-            <span className="text-2xl font-bold logo text-coffee-900">
-              cafeco.works
-            </span>
-          </Link>
-        </div>
-      </nav>
-
       {/* Coffee Breadcrumbs */}
       <div className="px-6 py-4 bg-coffee-cream">
         <div className="text-sm breadcrumbs breadcrumbs-coffee">
@@ -250,10 +228,10 @@ export default function SubmitPage() {
             </div>
 
             {/* Notice */}
-            <div className="cta-coffee border border-golden-300 rounded-2xl p-6">
+            <div className="bg-cream-100 border border-coffee-200 rounded-2xl p-6">
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
-                  <div className="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center">
+                  <div className="w-8 h-8 bg-golden-100 rounded-full flex items-center justify-center">
                     <span className="text-lg">ℹ️</span>
                   </div>
                 </div>
@@ -314,30 +292,6 @@ export default function SubmitPage() {
           </div>
         </div>
       </div>
-
-      {/* Coffee Footer */}
-      <footer className="footer-coffee text-white py-12 px-6 mt-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="flex justify-center mb-6">
-            <Image
-              src="/logo.png"
-              alt="cafeco.works"
-              width={48}
-              height={48}
-              className="rounded-lg opacity-90"
-            />
-          </div>
-          <h3 className="text-2xl font-bold mb-2 logo text-white">
-            cafeco.works
-          </h3>
-          <p className="text-white/80 mb-4">
-            The curated directory for remote workers
-          </p>
-          <p className="text-sm text-white/60">
-            Made with ☕ for the global remote community
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }

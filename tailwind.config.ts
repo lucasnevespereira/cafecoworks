@@ -110,13 +110,13 @@ const config: Config = {
           "base-content": "#2c1810",      // Dark coffee text
           "info": "#8b6f47",              // Coffee brown for info
           "info-content": "#ffffff",
-          "success": "#7fb069",           // Soft sage green
+          "success": "#8b6f47",           // Coffee brown instead of green
           "success-content": "#ffffff",
-          "warning": "#f4d03f",           // Same as secondary
+          "warning": "#f4d03f",           // Golden yellow
           "warning-content": "#2c1810",
-          "error": "#d64545",             // Muted red
+          "error": "#8b6f47",             // Coffee brown instead of red
           "error-content": "#ffffff",
-          "--rounded-box": "1rem",
+          "--rounded-box": "0.75rem",
           "--rounded-btn": "0.75rem",
           "--rounded-badge": "1.9rem",
           "--animation-btn": "0.2s",
