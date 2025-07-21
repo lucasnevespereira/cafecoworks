@@ -20,21 +20,21 @@ export default {
     themes: [
       {
         cafeco: {
-          "primary": "#2d2d2d",           // Dark coffee brown/black
+          "primary": "#2d2d2d",           // Dark coffee brown from logo
           "primary-content": "#ffffff",
           "secondary": "#f5e6a3",         // Warm yellow from logo
           "secondary-content": "#2d2d2d",
-          "accent": "#e8d5a3",            // Muted yellow accent
+          "accent": "#d4af37",            // Gold accent
           "accent-content": "#2d2d2d",
-          "neutral": "#3d3d3d",
+          "neutral": "#4a4a4a",
           "neutral-content": "#ffffff",
-          "base-100": "#fefcf7",          // Very light cream/off-white
-          "base-200": "#f8f4ec",          // Light cream
-          "base-300": "#f0eadb",          // Slightly darker cream
+          "base-100": "#ffffff",          // Clean white
+          "base-200": "#fefcf7",          // Very light cream
+          "base-300": "#f8f6f0",          // Light cream
           "base-content": "#2d2d2d",
-          "info": "#67a3c1",
-          "success": "#84cc16",
-          "warning": "#eab308",
+          "info": "#8b9dc3",
+          "success": "#22c55e",
+          "warning": "#f5e6a3",
           "error": "#ef4444",
         },
       },

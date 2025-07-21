@@ -10,125 +10,161 @@ const featuredCafes = cafes.filter((cafe) => cafe.featured).slice(0, 3);
 export default function Home() {
   return (
     <div className="min-h-screen bg-base-100">
-      {/* Header */}
-      <header className="navbar bg-base-100 shadow-sm">
+      {/* Minimal Header */}
+      <header className="navbar bg-base-100 border-b border-base-200 px-6 py-4">
         <div className="flex-1">
           <Link
             href="/"
-            className="btn btn-ghost text-xl font-bold text-primary"
+            className="flex items-center gap-3 text-primary hover:opacity-80 transition-opacity"
           >
             <Image
               src="/logo.png"
               alt="cafeco.works"
-              width={32}
-              height={32}
-              className="mr-2"
+              width={36}
+              height={36}
+              className="rounded-lg"
             />
-            cafeco.works
+            <span className="text-2xl font-bold">cafeco.works</span>
           </Link>
         </div>
         <div className="flex-none">
-          <Link href="/submit" className="btn btn-primary btn-sm">
+          <Link
+            href="/submit"
+            className="btn btn-primary btn-sm font-medium px-6"
+          >
             Submit Cafe
           </Link>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="hero min-h-[70vh] bg-gradient-to-br from-base-100 to-secondary/20">
-        <div className="hero-content text-center max-w-4xl">
-          <div>
-            <h1 className="text-5xl font-bold mb-6 text-primary">
-              Find Your Perfect
-              <span className="text-secondary"> Coworking Cafe</span>
-            </h1>
-            <p className="text-lg mb-8 text-base-content/80 max-w-2xl mx-auto">
-              Discover beautiful cafes around the world where remote workers
-              thrive. From bustling coffee shops to quiet corners, find your
-              ideal workspace.
-            </p>
+      {/* Hero Section - More Minimal */}
+      <section className="py-16 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-5xl lg:text-6xl font-bold mb-6 text-primary leading-tight">
+            Find Your Perfect
+            <br />
+            <span className="text-transparent bg-gradient-to-r from-secondary to-accent bg-clip-text">
+              Coworking Cafe
+            </span>
+          </h1>
 
-            {/* Search Bar */}
-            <div className="max-w-lg mx-auto mb-8">
-              <SearchBar />
+          <p className="text-xl text-base-content/70 mb-12 max-w-2xl mx-auto leading-relaxed">
+            Discover curated coworking cafes worldwide. From quiet corners to
+            buzzing spaces, find where remote work meets great coffee.
+          </p>
+
+          {/* Clean Search Bar */}
+          <div className="max-w-md mx-auto mb-16">
+            <SearchBar />
+          </div>
+
+          {/* Minimal Stats */}
+          <div className="flex justify-center gap-12 text-center">
+            <div>
+              <div className="text-3xl font-bold text-primary mb-1">
+                {cafes.length}
+              </div>
+              <div className="text-sm text-base-content/60 uppercase tracking-wider">
+                Cafes
+              </div>
             </div>
-
-            {/* Stats */}
-            <div className="stats shadow-lg bg-white/50 backdrop-blur-sm">
-              <div className="stat">
-                <div className="stat-value text-primary">{cafes.length}</div>
-                <div className="stat-title">Cafes</div>
+            <div className="w-px bg-base-300"></div>
+            <div>
+              <div className="text-3xl font-bold text-primary mb-1">
+                {cities.length}
               </div>
-              <div className="stat">
-                <div className="stat-value text-primary">{cities.length}</div>
-                <div className="stat-title">Cities</div>
+              <div className="text-sm text-base-content/60 uppercase tracking-wider">
+                Cities
               </div>
-              <div className="stat">
-                <div className="stat-value text-primary">5+</div>
-                <div className="stat-title">Countries</div>
+            </div>
+            <div className="w-px bg-base-300"></div>
+            <div>
+              <div className="text-3xl font-bold text-primary mb-1">5+</div>
+              <div className="text-sm text-base-content/60 uppercase tracking-wider">
+                Countries
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Cities */}
-      <section className="py-16 px-4 bg-base-200">
+      {/* Featured Cities - Minimal Grid */}
+      <section className="py-16 px-6 bg-base-200/50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-primary">
-            Popular Cities
-          </h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-primary mb-4">
+              Popular Destinations
+            </h2>
+            <p className="text-base-content/60">
+              Explore coworking cafes in these amazing cities
+            </p>
+          </div>
+
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {cities.map((city) => (
               <Link
                 key={city}
                 href={`/cities/${city.toLowerCase().replace(" ", "-")}`}
-                className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="group bg-base-100 rounded-2xl p-6 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-base-200"
               >
-                <div className="card-body p-6 text-center">
-                  <h3 className="text-lg font-semibold text-primary">{city}</h3>
-                  <p className="text-sm text-base-content/60">
-                    {cafes.filter((cafe) => cafe.city === city).length} cafes
-                  </p>
-                </div>
+                <h3 className="font-semibold text-primary text-lg mb-2 group-hover:text-accent transition-colors">
+                  {city}
+                </h3>
+                <p className="text-sm text-base-content/50">
+                  {cafes.filter((cafe) => cafe.city === city).length} cafes
+                </p>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Cafes */}
-      <section className="py-16 px-4">
+      {/* Featured Cafes - Clean Cards */}
+      <section className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-primary">
-            Featured Cafes
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-primary mb-4">
+              Featured Cafes
+            </h2>
+            <p className="text-base-content/60">
+              Hand-picked favorites from our community
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
             {featuredCafes.map((cafe) => (
               <Link
                 key={cafe.id}
                 href={`/places/${cafe.slug}`}
-                className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="group bg-base-100 rounded-3xl overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-base-200"
               >
-                <figure className="aspect-video bg-base-300">
-                  <div className="w-full h-full flex items-center justify-center text-base-content/40">
-                    📸 Photo placeholder
+                <div className="aspect-[4/3] bg-gradient-to-br from-base-200 to-base-300 flex items-center justify-center">
+                  <div className="text-6xl opacity-30">☕</div>
+                </div>
+
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-3">
+                    <h3 className="font-bold text-xl text-primary group-hover:text-accent transition-colors line-clamp-1">
+                      {cafe.name}
+                    </h3>
+                    <div className="badge badge-secondary badge-sm">
+                      Featured
+                    </div>
                   </div>
-                </figure>
-                <div className="card-body">
-                  <h3 className="card-title text-primary">{cafe.name}</h3>
-                  <p className="text-base-content/70 line-clamp-2">
+
+                  <p className="text-base-content/70 text-sm mb-4 line-clamp-2 leading-relaxed">
                     {cafe.description}
                   </p>
-                  <div className="flex items-center justify-between mt-4">
-                    <div className="text-sm text-base-content/60">
+
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-base-content/60 font-medium">
                       {cafe.city}, {cafe.country}
-                    </div>
+                    </span>
                     <div className="flex gap-1">
                       {cafe.tags.slice(0, 2).map((tag) => (
                         <span
                           key={tag}
-                          className="badge badge-secondary badge-sm"
+                          className="badge badge-outline badge-xs"
                         >
                           {tag}
                         </span>
@@ -142,36 +178,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ad Banner Placeholder */}
-      <section className="py-8 px-4 bg-base-300">
-        <div className="max-w-4xl mx-auto">
-          <div className="card bg-base-100 shadow-md">
-            <div className="card-body text-center py-12">
-              <div className="text-base-content/40 text-lg font-medium">
-                🎯 Advertisement Space
-              </div>
-              <p className="text-base-content/30 text-sm mt-2">
-                Your ad could be here
-              </p>
-            </div>
-          </div>
+      {/* Clean Call to Action */}
+      <section className="py-16 px-6 bg-gradient-to-r from-secondary/10 to-accent/10">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-primary mb-4">
+            Know a Great Coworking Cafe?
+          </h2>
+          <p className="text-lg text-base-content/70 mb-8">
+            Help fellow remote workers discover amazing workspaces
+          </p>
+          <Link
+            href="/submit"
+            className="btn btn-primary btn-lg px-8 font-medium"
+          >
+            Submit Your Favorite Cafe
+          </Link>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer footer-center p-10 bg-primary text-primary-content">
-        <aside>
-          <Image
-            src="/logo.png"
-            alt="cafeco.works"
-            width={40}
-            height={40}
-            className="mb-4"
-          />
-          <p className="font-bold text-lg">cafeco.works</p>
-          <p>Find your perfect coworking cafe worldwide</p>
-          <p className="text-sm opacity-70">Made with ☕ for remote workers</p>
-        </aside>
+      {/* Minimal Footer */}
+      <footer className="bg-primary text-primary-content py-12 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="flex justify-center mb-6">
+            <Image
+              src="/logo.png"
+              alt="cafeco.works"
+              width={48}
+              height={48}
+              className="rounded-lg opacity-90"
+            />
+          </div>
+          <h3 className="text-2xl font-bold mb-2">cafeco.works</h3>
+          <p className="text-primary-content/80 mb-4">
+            The curated directory for remote workers
+          </p>
+          <p className="text-sm text-primary-content/60">
+            Made with ☕ for the global remote community
+          </p>
+        </div>
       </footer>
     </div>
   );

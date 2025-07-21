@@ -10,333 +10,329 @@ export const metadata = {
 export default function SubmitPage() {
   return (
     <div className="min-h-screen bg-base-100">
-      {/* Navigation */}
-      <nav className="navbar bg-base-100 shadow-sm">
+      {/* Minimal Navigation */}
+      <nav className="navbar bg-base-100 border-b border-base-200 px-6 py-4">
         <div className="flex-1">
           <Link
             href="/"
-            className="btn btn-ghost text-xl font-bold text-primary"
+            className="flex items-center gap-3 text-primary hover:opacity-80 transition-opacity"
           >
             <Image
               src="/logo.png"
               alt="cafeco.works"
-              width={32}
-              height={32}
-              className="mr-2"
+              width={36}
+              height={36}
+              className="rounded-lg"
             />
-            cafeco.works
+            <span className="text-2xl font-bold">cafeco.works</span>
           </Link>
         </div>
       </nav>
 
       {/* Breadcrumbs */}
-      <div className="breadcrumbs text-sm px-6 py-4">
-        <ul>
-          <li>
-            <Link href="/" className="text-primary hover:underline">
-              Home
-            </Link>
-          </li>
-          <li className="text-base-content/60">Submit Cafe</li>
-        </ul>
+      <div className="px-6 py-4">
+        <div className="text-sm breadcrumbs">
+          <ul>
+            <li>
+              <Link href="/" className="text-primary hover:underline">
+                Home
+              </Link>
+            </li>
+            <li className="text-base-content/60">Submit Cafe</li>
+          </ul>
+        </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto px-6 py-8">
         {/* Hero Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-primary mb-4">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl lg:text-5xl font-bold text-primary mb-6">
             Submit a Coworking Cafe
           </h1>
-          <p className="text-lg text-base-content/70 max-w-2xl mx-auto">
+          <p className="text-xl text-base-content/70 max-w-2xl mx-auto leading-relaxed">
             Know a great cafe that's perfect for remote work? Help other digital
-            nomads and remote workers discover amazing workspaces around the
-            world.
+            nomads discover amazing workspaces around the world.
           </p>
         </div>
 
-        {/* Info Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <div className="card bg-base-200 shadow-md">
-            <div className="card-body text-center">
-              <div className="text-3xl mb-2">☕</div>
-              <h3 className="card-title justify-center text-primary">
-                Great Coffee
-              </h3>
-              <p className="text-sm text-base-content/70">
-                Quality coffee and atmosphere
-              </p>
+        {/* Benefits Cards */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          <div className="text-center p-8 bg-gradient-to-br from-secondary/5 to-accent/5 rounded-3xl border border-base-200">
+            <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-2xl flex items-center justify-center">
+              <span className="text-2xl">☕</span>
             </div>
+            <h3 className="text-lg font-bold text-primary mb-2">
+              Great Coffee
+            </h3>
+            <p className="text-sm text-base-content/70">
+              Quality coffee and welcoming atmosphere
+            </p>
           </div>
-          <div className="card bg-base-200 shadow-md">
-            <div className="card-body text-center">
-              <div className="text-3xl mb-2">📶</div>
-              <h3 className="card-title justify-center text-primary">
-                Reliable WiFi
-              </h3>
-              <p className="text-sm text-base-content/70">
-                Strong internet for productive work
-              </p>
+          <div className="text-center p-8 bg-gradient-to-br from-secondary/5 to-accent/5 rounded-3xl border border-base-200">
+            <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-2xl flex items-center justify-center">
+              <span className="text-2xl">📶</span>
             </div>
+            <h3 className="text-lg font-bold text-primary mb-2">
+              Reliable WiFi
+            </h3>
+            <p className="text-sm text-base-content/70">
+              Strong internet for productive work
+            </p>
           </div>
-          <div className="card bg-base-200 shadow-md">
-            <div className="card-body text-center">
-              <div className="text-3xl mb-2">💺</div>
-              <h3 className="card-title justify-center text-primary">
-                Comfortable Seating
-              </h3>
-              <p className="text-sm text-base-content/70">
-                Places to work for hours
-              </p>
+          <div className="text-center p-8 bg-gradient-to-br from-secondary/5 to-accent/5 rounded-3xl border border-base-200">
+            <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-2xl flex items-center justify-center">
+              <span className="text-2xl">💺</span>
             </div>
+            <h3 className="text-lg font-bold text-primary mb-2">
+              Comfortable Seating
+            </h3>
+            <p className="text-sm text-base-content/70">
+              Spaces designed for long work sessions
+            </p>
           </div>
         </div>
 
         {/* Submit Form */}
-        <div className="card bg-base-100 shadow-xl">
-          <div className="card-body">
-            <h2 className="card-title text-primary mb-6">
-              Cafe Submission Form
-            </h2>
+        <div className="bg-base-100 border border-base-200 rounded-3xl p-8 shadow-lg">
+          <h2 className="text-2xl font-bold text-primary mb-8 text-center">
+            Cafe Submission Form
+          </h2>
 
-            <form className="space-y-6">
-              {/* Basic Info */}
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text font-medium">Cafe Name *</span>
+          <form className="space-y-8">
+            {/* Basic Info */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-semibold text-primary border-b border-base-200 pb-2">
+                Basic Information
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-base-content mb-2">
+                    Cafe Name <span className="text-error">*</span>
                   </label>
                   <input
                     type="text"
                     placeholder="The Coffee House"
-                    className="input input-bordered"
+                    className="input input-bordered w-full rounded-xl border-base-300 focus:border-primary"
                     required
                   />
                 </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text font-medium">City *</span>
+                <div>
+                  <label className="block text-sm font-medium text-base-content mb-2">
+                    City <span className="text-error">*</span>
                   </label>
                   <input
                     type="text"
                     placeholder="San Francisco"
-                    className="input input-bordered"
+                    className="input input-bordered w-full rounded-xl border-base-300 focus:border-primary"
                     required
                   />
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text font-medium">Country *</span>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-base-content mb-2">
+                    Country <span className="text-error">*</span>
                   </label>
                   <input
                     type="text"
                     placeholder="United States"
-                    className="input input-bordered"
+                    className="input input-bordered w-full rounded-xl border-base-300 focus:border-primary"
                     required
                   />
                 </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text font-medium">
-                      Website (optional)
-                    </span>
+                <div>
+                  <label className="block text-sm font-medium text-base-content mb-2">
+                    Website{" "}
+                    <span className="text-base-content/60">(optional)</span>
                   </label>
                   <input
                     type="url"
                     placeholder="https://example.com"
-                    className="input input-bordered"
+                    className="input input-bordered w-full rounded-xl border-base-300 focus:border-primary"
                   />
                 </div>
               </div>
 
-              {/* Address */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-medium">Full Address *</span>
+              <div>
+                <label className="block text-sm font-medium text-base-content mb-2">
+                  Full Address <span className="text-error">*</span>
                 </label>
                 <input
                   type="text"
                   placeholder="123 Main Street, San Francisco, CA 94102"
-                  className="input input-bordered"
+                  className="input input-bordered w-full rounded-xl border-base-300 focus:border-primary"
                   required
                 />
               </div>
+            </div>
 
-              {/* Description */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-medium">Description *</span>
+            {/* Description */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-primary border-b border-base-200 pb-2">
+                Description
+              </h3>
+              <div>
+                <label className="block text-sm font-medium text-base-content mb-2">
+                  What makes this cafe great for remote work?{" "}
+                  <span className="text-error">*</span>
                 </label>
                 <textarea
-                  className="textarea textarea-bordered h-32"
-                  placeholder="Describe what makes this cafe great for remote work. Include details about WiFi quality, seating, atmosphere, power outlets, etc."
+                  className="textarea textarea-bordered w-full h-32 rounded-xl border-base-300 focus:border-primary resize-none"
+                  placeholder="Describe the atmosphere, WiFi quality, seating options, noise level, power outlets, and what makes this place special for remote workers..."
                   required
                 ></textarea>
               </div>
+            </div>
 
-              {/* Features */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-medium">
-                    Features (select all that apply)
-                  </span>
-                </label>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-2">
-                  {[
-                    "wifi",
-                    "power-outlets",
-                    "quiet",
-                    "spacious",
-                    "outdoor-seating",
-                    "good-coffee",
-                    "food-available",
-                    "meeting-rooms",
-                    "phone-calls-ok",
-                    "24-7",
-                    "weekend-open",
-                    "student-friendly",
-                  ].map((feature) => (
-                    <label
-                      key={feature}
-                      className="label cursor-pointer justify-start"
-                    >
-                      <input
-                        type="checkbox"
-                        className="checkbox checkbox-primary checkbox-sm mr-2"
-                      />
-                      <span className="label-text text-sm capitalize">
-                        {feature.replace("-", " ")}
-                      </span>
-                    </label>
-                  ))}
-                </div>
+            {/* Features */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-primary border-b border-base-200 pb-2">
+                Features
+              </h3>
+              <p className="text-sm text-base-content/70 mb-4">
+                Select all features that apply to this cafe
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {[
+                  { id: "wifi", label: "Fast WiFi", emoji: "📶" },
+                  { id: "outlets", label: "Power Outlets", emoji: "🔌" },
+                  { id: "quiet", label: "Quiet Environment", emoji: "🤫" },
+                  { id: "spacious", label: "Spacious Seating", emoji: "🪑" },
+                  { id: "outdoor", label: "Outdoor Seating", emoji: "🌳" },
+                  { id: "calls", label: "Phone Calls OK", emoji: "📞" },
+                  { id: "meetings", label: "Meeting Friendly", emoji: "👥" },
+                  { id: "247", label: "Extended Hours", emoji: "🕐" },
+                  { id: "food", label: "Food Available", emoji: "🥐" },
+                  { id: "parking", label: "Parking Available", emoji: "🅿️" },
+                  { id: "student", label: "Student Friendly", emoji: "🎓" },
+                  { id: "coworking", label: "Coworking Space", emoji: "💻" },
+                ].map((feature) => (
+                  <label
+                    key={feature.id}
+                    className="flex items-center gap-3 p-3 border border-base-200 rounded-xl hover:bg-base-200/50 cursor-pointer transition-colors"
+                  >
+                    <input
+                      type="checkbox"
+                      className="checkbox checkbox-primary checkbox-sm"
+                    />
+                    <span className="text-lg">{feature.emoji}</span>
+                    <span className="text-sm font-medium">{feature.label}</span>
+                  </label>
+                ))}
               </div>
+            </div>
 
-              {/* Contact */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-medium">
-                    Your Email (for follow-up questions)
+            {/* Contact */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-primary border-b border-base-200 pb-2">
+                Contact Information
+              </h3>
+              <div>
+                <label className="block text-sm font-medium text-base-content mb-2">
+                  Your Email{" "}
+                  <span className="text-base-content/60">
+                    (for follow-up questions)
                   </span>
                 </label>
                 <input
                   type="email"
                   placeholder="your.email@example.com"
-                  className="input input-bordered"
+                  className="input input-bordered w-full rounded-xl border-base-300 focus:border-primary"
                 />
-                <label className="label">
-                  <span className="label-text-alt text-base-content/60">
-                    We'll only use this to contact you about your submission
-                  </span>
-                </label>
+                <p className="text-sm text-base-content/60 mt-2">
+                  We'll only use this to contact you about your submission
+                </p>
               </div>
+            </div>
 
-              {/* Submission Notice */}
-              <div className="alert alert-info">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  className="stroke-current shrink-0 w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
-                <span className="text-sm">
-                  <strong>Note:</strong> All submissions are reviewed before
-                  being published. We'll verify the information and may reach
-                  out for additional details.
-                </span>
+            {/* Notice */}
+            <div className="bg-gradient-to-r from-secondary/10 to-accent/10 border border-secondary/20 rounded-2xl p-6">
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center">
+                    <span className="text-lg">ℹ️</span>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-primary mb-2">
+                    Review Process
+                  </h4>
+                  <p className="text-sm text-base-content/70">
+                    All submissions are reviewed within 1-3 business days. We
+                    verify locations and check that they meet our coworking
+                    criteria before publishing.
+                  </p>
+                </div>
               </div>
+            </div>
 
-              {/* Submit Button */}
-              <div className="form-control mt-8">
-                <button className="btn btn-primary btn-lg">
-                  Submit Cafe for Review
-                </button>
-              </div>
-            </form>
-          </div>
+            {/* Submit Button */}
+            <div className="text-center pt-4">
+              <button className="btn btn-primary btn-lg px-12 font-medium rounded-2xl">
+                Submit Cafe for Review
+              </button>
+            </div>
+          </form>
         </div>
 
         {/* FAQ Section */}
-        <div className="mt-16">
-          <h2 className="text-2xl font-bold text-primary text-center mb-8">
+        <div className="mt-20">
+          <h2 className="text-3xl font-bold text-primary text-center mb-12">
             Frequently Asked Questions
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="card bg-base-200 shadow-md">
-              <div className="card-body">
-                <h3 className="card-title text-primary text-lg">
-                  How long does review take?
-                </h3>
-                <p className="text-base-content/70">
-                  Usually 1-3 business days. We verify the location and check
-                  that it meets our coworking criteria.
-                </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                q: "How long does the review take?",
+                a: "Usually 1-3 business days. We verify the location and check that it meets our coworking criteria.",
+              },
+              {
+                q: "What makes a good coworking cafe?",
+                a: "Reliable WiFi, comfortable seating, adequate power outlets, and a welcoming atmosphere for laptop users.",
+              },
+              {
+                q: "Can I submit multiple cafes?",
+                a: "Absolutely! We appreciate multiple submissions, especially from local experts and frequent travelers.",
+              },
+              {
+                q: "Do you accept international submissions?",
+                a: "Yes! We're building a global directory and welcome submissions from anywhere in the world.",
+              },
+            ].map((faq, index) => (
+              <div
+                key={index}
+                className="bg-gradient-to-br from-base-200/50 to-base-300/50 rounded-3xl p-8 border border-base-200"
+              >
+                <h3 className="text-lg font-bold text-primary mb-3">{faq.q}</h3>
+                <p className="text-base-content/70 leading-relaxed">{faq.a}</p>
               </div>
-            </div>
-
-            <div className="card bg-base-200 shadow-md">
-              <div className="card-body">
-                <h3 className="card-title text-primary text-lg">
-                  What makes a good coworking cafe?
-                </h3>
-                <p className="text-base-content/70">
-                  Reliable WiFi, comfortable seating, adequate power outlets,
-                  and a welcoming atmosphere for laptop users.
-                </p>
-              </div>
-            </div>
-
-            <div className="card bg-base-200 shadow-md">
-              <div className="card-body">
-                <h3 className="card-title text-primary text-lg">
-                  Can I submit multiple cafes?
-                </h3>
-                <p className="text-base-content/70">
-                  Absolutely! We appreciate multiple submissions, especially if
-                  you're a local expert or frequent traveler.
-                </p>
-              </div>
-            </div>
-
-            <div className="card bg-base-200 shadow-md">
-              <div className="card-body">
-                <h3 className="card-title text-primary text-lg">
-                  Do you accept international submissions?
-                </h3>
-                <p className="text-base-content/70">
-                  Yes! We're building a global directory and welcome submissions
-                  from anywhere in the world.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="footer footer-center p-10 bg-primary text-primary-content mt-16">
-        <aside>
-          <Image
-            src="/logo.png"
-            alt="cafeco.works"
-            width={40}
-            height={40}
-            className="mb-4"
-          />
-          <p className="font-bold text-lg">cafeco.works</p>
-          <p>Find your perfect coworking cafe worldwide</p>
-          <p className="text-sm opacity-70">Made with ☕ for remote workers</p>
-        </aside>
+      <footer className="bg-primary text-primary-content py-12 px-6 mt-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="flex justify-center mb-6">
+            <Image
+              src="/logo.png"
+              alt="cafeco.works"
+              width={48}
+              height={48}
+              className="rounded-lg opacity-90"
+            />
+          </div>
+          <h3 className="text-2xl font-bold mb-2">cafeco.works</h3>
+          <p className="text-primary-content/80 mb-4">
+            The curated directory for remote workers
+          </p>
+          <p className="text-sm text-primary-content/60">
+            Made with ☕ for the global remote community
+          </p>
+        </div>
       </footer>
     </div>
   );
