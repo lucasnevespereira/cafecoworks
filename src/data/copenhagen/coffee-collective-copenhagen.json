@@ -1,0 +1,14 @@
+{
+  "id": "3",
+  "name": "The Coffee Collective",
+  "slug": "coffee-collective-copenhagen",
+  "description": "Scandinavian design meets exceptional coffee. Light-filled space with comfortable seating and a focus on sustainable, locally-roasted beans.",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "address": "Jægersborggade 10, 2200 København N, Denmark",
+  "tags": ["scandinavian", "sustainable", "light-filled", "local-roasting"],
+  "image": "/images/copenhagen/coffee-collective-copenhagen.jpg",
+  "lat": 55.6867,
+  "lng": 12.5700,
+  "featured": false
+}

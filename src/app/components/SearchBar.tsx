@@ -3,41 +3,50 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Fuse from "fuse.js";
-import cafes from "../../data/cafes.json";
 import Link from "next/link";
+import type { Cafe } from "../../data/types";
 
-const fuse = new Fuse(cafes, {
-  keys: ["name", "city", "country", "tags"],
-  threshold: 0.4,
-  includeScore: true,
-});
+interface SearchBarProps {
+  cafes: Cafe[];
+}
 
-export default function SearchBar() {
+export default function SearchBar({ cafes }: SearchBarProps) {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<{ item: (typeof cafes)[0] }[]>([]);
+  const [results, setResults] = useState<{ item: Cafe }[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [fuse, setFuse] = useState<Fuse<Cafe> | null>(null);
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (query.length > 1) {
+    if (cafes.length > 0) {
+      setFuse(
+        new Fuse(cafes, {
+          keys: ["name", "city", "country", "tags"],
+          threshold: 0.4,
+          includeScore: true,
+        })
+      );
+    }
+  }, [cafes]);
+
+  useEffect(() => {
+    if (query.length > 1 && fuse) {
       setIsLoading(true);
-      // Add slight delay for better UX
       const timeoutId = setTimeout(() => {
         const searchResults = fuse.search(query);
         setResults(searchResults.slice(0, 5));
         setIsOpen(true);
         setIsLoading(false);
       }, 150);
-
       return () => clearTimeout(timeoutId);
     } else {
       setResults([]);
       setIsOpen(false);
       setIsLoading(false);
     }
-  }, [query]);
+  }, [query, fuse]);
 
   const handleSelect = (slug: string) => {
     router.push(`/places/${slug}`);
@@ -97,7 +106,7 @@ export default function SearchBar() {
         <div className="absolute top-full left-0 right-0 mt-2 bg-base-100 shadow-2xl rounded-2xl border border-coffee-200 z-50 overflow-hidden">
           {results.map(({ item }) => (
             <button
-              key={item.id}
+              key={item.slug}
               className="w-full p-4 text-left hover:bg-coffee-50 transition-colors flex items-center gap-4 border-b border-coffee-200 last:border-b-0"
               onClick={() => handleSelect(item.slug)}
             >
@@ -113,7 +122,7 @@ export default function SearchBar() {
                 </div>
               </div>
               <div className="flex gap-1 flex-wrap">
-                {item.tags.slice(0, 2).map((tag) => (
+                {item.tags.slice(0, 2).map((tag: string) => (
                   <span key={tag} className="badge-coffee badge-xs">
                     {tag}
                   </span>

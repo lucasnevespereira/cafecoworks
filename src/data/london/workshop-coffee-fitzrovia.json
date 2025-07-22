@@ -1,0 +1,14 @@
+{
+  "id": "9",
+  "name": "Workshop Coffee",
+  "slug": "workshop-coffee-fitzrovia",
+  "description": "Bright and airy space with communal tables and bar seating. Popular with the tech crowd, offering reliable wifi and plenty of power points.",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "27 Mortimer St, London W1T 3JF, UK",
+  "tags": ["bright-airy", "communal-tables", "bar-seating", "tech-crowd", "reliable-wifi"],
+  "image": "/images/london/workshop-coffee-fitzrovia.jpg",
+  "lat": 51.5188,
+  "lng": -0.1415,
+  "featured": false
+}

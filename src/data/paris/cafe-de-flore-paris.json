@@ -1,0 +1,14 @@
+{
+  "id": "6",
+  "name": "Café de Flore",
+  "slug": "cafe-de-flore-paris",
+  "description": "Historic Parisian cafe with classic charm. While touristy, the upstairs area offers a quieter space for work with traditional French cafe atmosphere.",
+  "city": "Paris",
+  "country": "France",
+  "address": "172 Bd Saint-Germain, 75006 Paris, France",
+  "tags": ["historic", "classic-charm", "upstairs-quiet", "traditional", "saint-germain"],
+  "image": "/images/paris/cafe-de-flore-paris.jpg",
+  "lat": 48.8542,
+  "lng": 2.3320,
+  "featured": false
+}

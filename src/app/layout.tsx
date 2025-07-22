@@ -11,21 +11,21 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "cafeco.works - Find Coworking Cafes Worldwide",
+  title: "cafecoworks - Find Coworking Cafes Worldwide",
   description:
     "Discover the best cafe coworking spaces around the world. Work remotely in beautiful, coffee-fueled environments.",
   keywords: "coworking, cafes, remote work, digital nomad, workspace",
-  authors: [{ name: "cafeco.works" }],
+  authors: [{ name: "cafecoworks" }],
   openGraph: {
-    title: "cafeco.works - Find Coworking Cafes Worldwide",
+    title: "cafecoworks - Find Coworking Cafes Worldwide",
     description: "Discover the best cafe coworking spaces around the world",
-    url: "https://cafeco.works",
-    siteName: "cafeco.works",
+    url: "https://cafecoworks.com",
+    siteName: "cafecoworks",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "cafeco.works - Find Coworking Cafes Worldwide",
+    title: "cafecoworks - Find Coworking Cafes Worldwide",
     description: "Discover the best cafe coworking spaces around the world",
   },
 };

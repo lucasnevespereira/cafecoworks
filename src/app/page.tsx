@@ -1,12 +1,17 @@
 import Link from "next/link";
 import SearchBar from "./components/SearchBar";
-import cafes from "../data/cafes.json";
+import { getAllCafes } from "../data/loadCafes";
+import type { Cafe } from "../data/types";
 
-// Get unique cities for featured section
-const cities = Array.from(new Set(cafes.map((cafe) => cafe.city))).slice(0, 6);
-const featuredCafes = cafes.filter((cafe) => cafe.featured).slice(0, 3);
+export default async function Home() {
+  const cafes: Cafe[] = await getAllCafes();
+  // Get unique cities for featured section
+  const cities = Array.from(new Set(cafes.map((cafe) => cafe.city))).slice(
+    0,
+    6
+  );
+  const featuredCafes = cafes.filter((cafe) => cafe.featured).slice(0, 3);
 
-export default function Home() {
   return (
     <div className="min-h-screen bg-base-100">
       {/* Hero Section with Coffee Gradient */}
@@ -25,7 +30,7 @@ export default function Home() {
 
           {/* Clean Search Bar */}
           <div className="max-w-md mx-auto mb-16">
-            <SearchBar />
+            <SearchBar cafes={cafes} />
           </div>
 
           {/* Coffee-themed Stats */}
@@ -102,7 +107,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-3 gap-8">
             {featuredCafes.map((cafe) => (
               <Link
-                key={cafe.id}
+                key={cafe.slug}
                 href={`/places/${cafe.slug}`}
                 className="card-coffee overflow-hidden hover:-translate-y-2 transition-all duration-300 group"
               >

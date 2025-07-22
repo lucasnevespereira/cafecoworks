@@ -14,7 +14,7 @@ export default function Footer() {
           />
         </div>
         <h3 className="text-2xl font-bold mb-2 logo text-coffee-900">
-          cafeco.works
+          cafecoworks
         </h3>
         <p className="text-cream-100 mb-4">
           The curated directory for remote workers

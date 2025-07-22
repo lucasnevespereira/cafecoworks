@@ -17,7 +17,7 @@ export default function Header() {
             className="rounded-lg"
           />
           <span className="text-2xl font-bold logo text-coffee-900">
-            cafeco.works
+            cafecoworks
           </span>
         </Link>
       </div>

@@ -1,0 +1,14 @@
+{
+  "id": "1",
+  "name": "Bluestone Lane",
+  "slug": "bluestone-lane-soho",
+  "description": "Australian-style coffee house with spacious seating, excellent wifi, and power outlets. Perfect for digital nomads and remote workers seeking a productive environment in the heart of NYC.",
+  "city": "New York",
+  "country": "United States",
+  "address": "30 Broad St, New York, NY 10004",
+  "tags": ["wifi", "power-outlets", "spacious", "australian-coffee", "downtown"],
+  "image": "/images/new-york/bluestone-lane-soho.jpg",
+  "lat": 40.7041,
+  "lng": -74.0124,
+  "featured": true
+}

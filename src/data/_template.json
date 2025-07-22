@@ -1,0 +1,21 @@
+{
+  "name": "Cafe Name",
+  "description": "A brief description of the cafe, its atmosphere, and why it's great for coworking. Include details about wifi, seating, noise level, etc.",
+  "city": "City Name",
+  "country": "Country Name",
+  "address": "Full address of the cafe",
+  "tags": [
+    "wifi",
+    "power-outlets",
+    "quiet",
+    "spacious",
+    "coffee-quality",
+    "food-available",
+    "good-lighting",
+    "comfortable-seating"
+  ],
+  "lat": 0.0,
+  "lng": 0.0,
+  "featured": false,
+  "contributor": "githubuser123"
+}

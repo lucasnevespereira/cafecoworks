@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import cafes from "../../../data/cafes.json";
+import { getAllCafes } from "../../../data/loadCafes";
+import type { Cafe } from "../../../data/types";
 import AdBanner from "../../components/AdBanner";
 
 interface PageProps {
@@ -9,6 +10,7 @@ interface PageProps {
 
 // Generate static params for all cafes
 export async function generateStaticParams() {
+  const cafes: Cafe[] = await getAllCafes();
   return cafes.map((cafe) => ({
     slug: cafe.slug,
   }));
@@ -17,6 +19,7 @@ export async function generateStaticParams() {
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
+  const cafes: Cafe[] = await getAllCafes();
   const cafe = cafes.find((c) => c.slug === slug);
 
   if (!cafe) {
@@ -38,6 +41,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function CafePage({ params }: PageProps) {
   const { slug } = await params;
+  const cafes: Cafe[] = await getAllCafes();
   const cafe = cafes.find((c) => c.slug === slug);
 
   if (!cafe) {
@@ -45,7 +49,7 @@ export default async function CafePage({ params }: PageProps) {
   }
 
   const relatedCafes = cafes
-    .filter((c) => c.city === cafe.city && c.id !== cafe.id)
+    .filter((c) => c.city === cafe.city && c.slug !== cafe.slug)
     .slice(0, 3);
 
   return (
@@ -178,7 +182,7 @@ export default async function CafePage({ params }: PageProps) {
             <div className="grid lg:grid-cols-3 gap-8">
               {relatedCafes.map((relatedCafe) => (
                 <Link
-                  key={relatedCafe.id}
+                  key={relatedCafe.slug}
                   href={`/places/${relatedCafe.slug}`}
                   className="card-coffee overflow-hidden hover:-translate-y-2 transition-all duration-300 group"
                 >

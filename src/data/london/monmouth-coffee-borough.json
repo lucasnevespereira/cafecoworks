@@ -1,0 +1,14 @@
+{
+  "id": "4",
+  "name": "Monmouth Coffee",
+  "slug": "monmouth-coffee-borough",
+  "description": "Historic coffee roastery and cafe near Borough Market. Known for exceptional beans and a cozy atmosphere that attracts writers and creatives.",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "2 Park St, London SE1 9AB, UK",
+  "tags": ["historic", "roastery", "cozy", "near-market", "writers"],
+  "image": "/images/london/monmouth-coffee-borough.jpg",
+  "lat": 51.5055,
+  "lng": -0.0944,
+  "featured": true
+}

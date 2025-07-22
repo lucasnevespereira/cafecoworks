@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import cafes from "../../../data/cafes.json";
+import { getAllCafes } from "../../../data/loadCafes";
+import type { Cafe } from "../../../data/types";
 import AdBanner from "../../components/AdBanner";
 
 interface PageProps {
@@ -9,6 +10,7 @@ interface PageProps {
 
 // Generate static params for all cities
 export async function generateStaticParams() {
+  const cafes: Cafe[] = await getAllCafes();
   const cities = Array.from(new Set(cafes.map((cafe) => cafe.city)));
   return cities.map((city) => ({
     city: city.toLowerCase().replace(" ", "-"),
@@ -18,6 +20,7 @@ export async function generateStaticParams() {
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps) {
   const { city } = await params;
+  const cafes: Cafe[] = await getAllCafes();
   const cityName = city
     .replace("-", " ")
     .replace(/\b\w/g, (l) => l.toUpperCase());
@@ -27,12 +30,12 @@ export async function generateMetadata({ params }: PageProps) {
 
   if (cityCafes.length === 0) {
     return {
-      title: "City Not Found | cafeco.works",
+      title: "City Not Found | cafecoworks",
     };
   }
 
   return {
-    title: `Best Coworking Cafes in ${cityName} | cafeco.works`,
+    title: `Best Coworking Cafes in ${cityName} | cafecoworks`,
     description: `Discover ${cityCafes.length} amazing coworking cafes in ${cityName}. Find the perfect workspace for remote work and digital nomads.`,
     openGraph: {
       title: `Best Coworking Cafes in ${cityName}`,
@@ -44,6 +47,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function CityPage({ params }: PageProps) {
   const { city } = await params;
+  const cafes: Cafe[] = await getAllCafes();
   const cityName = city
     .replace("-", " ")
     .replace(/\b\w/g, (l) => l.toUpperCase());
@@ -135,7 +139,7 @@ export default async function CityPage({ params }: PageProps) {
               .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
               .map((cafe) => (
                 <Link
-                  key={cafe.id}
+                  key={cafe.slug}
                   href={`/places/${cafe.slug}`}
                   className="card-coffee overflow-hidden hover:-translate-y-2 transition-all duration-300 group"
                 >
