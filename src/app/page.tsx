@@ -1,12 +1,50 @@
 import Link from "next/link";
 import SearchBar from "./components/SearchBar";
-import cafes from "../data/cafes.json";
 
-// Get unique cities for featured section
-const cities = Array.from(new Set(cafes.map((cafe) => cafe.city))).slice(0, 6);
-const featuredCafes = cafes.filter((cafe) => cafe.featured).slice(0, 3);
+interface Cafe {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  city: string;
+  country: string;
+  location: string;
+  address?: string;
+  website?: string;
+  googleMapsUrl?: string;
+  image: string;
+  tags: string[];
+  lat?: number;
+  lng?: number;
+  station?: string;
+  featured?: boolean;
+}
 
-export default function Home() {
+async function getCafesData(): Promise<Cafe[]> {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/cafes.json`,
+      {
+        next: { revalidate: 3600 }, // Revalidate every hour
+      }
+    );
+    return response.json();
+  } catch (error) {
+    console.error("Failed to load cafes data:", error);
+    return [];
+  }
+}
+
+export default async function Home() {
+  const cafes = await getCafesData();
+
+  // Get unique cities for featured section
+  const cities = Array.from(new Set(cafes.map((cafe) => cafe.city))).slice(
+    0,
+    6
+  );
+  const featuredCafes = cafes.filter((cafe) => cafe.featured).slice(0, 3);
+
   return (
     <div className="min-h-screen bg-base-100">
       {/* Hero Section with Coffee Gradient */}

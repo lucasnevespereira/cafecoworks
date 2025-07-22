@@ -1,0 +1,15 @@
+{
+  "name": "Blue Bottle Coffee Shibuya",
+  "slug": "blue-bottle-shibuya",
+  "description": "Modern coffee shop in the heart of Shibuya with excellent wifi and a quiet upstairs area perfect for remote work. Known for their meticulous brewing methods and single-origin beans.",
+  "city": "Tokyo",
+  "country": "Japan",
+  "location": "1-4-2 Jinnan, Shibuya City, Tokyo 150-0041, Japan",
+  "website": "https://bluebottlecoffee.jp",
+  "googleMapsUrl": "https://maps.google.com/?q=1-4-2+Jinnan+Shibuya+City+Tokyo+150-0041+Japan",
+  "image": "/images/tokyo/blue-bottle-shibuya.jpg",
+  "tags": ["modern", "quiet", "wifi", "upstairs-area", "single-origin", "shibuya"],
+  "lat": 35.6580,
+  "lng": 139.7016,
+  "station": "Shibuya"
+}

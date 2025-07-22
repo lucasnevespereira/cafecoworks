@@ -1,0 +1,15 @@
+{
+  "name": "Elephant Grounds",
+  "slug": "elephant-grounds-star-street",
+  "description": "Modern specialty coffee shop with excellent wifi and work-friendly environment. Known for their signature elephant-shaped cookies and quality brews.",
+  "city": "Hong Kong",
+  "country": "Hong Kong",
+  "location": "5 Star St, Wan Chai, Hong Kong",
+  "website": "https://elephantgrounds.com",
+  "googleMapsUrl": "https://maps.google.com/?q=5+Star+St+Wan+Chai+Hong+Kong",
+  "image": "/images/hong-kong/elephant-grounds-star-street.jpg",
+  "tags": ["modern", "specialty-coffee", "work-friendly", "signature-cookies", "wan-chai"],
+  "lat": 22.2783,
+  "lng": 114.1747,
+  "station": "Wan-Chai"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Blue Bottle Coffee",
+  "slug": "blue-bottle-hayes-valley",
+  "description": "Minimalist coffee shop with exceptional single-origin brews. Quiet atmosphere with communal tables, perfect for focused work sessions.",
+  "city": "San Francisco",
+  "country": "United States",
+  "location": "315 Linden St, San Francisco, CA 94102",
+  "website": "https://bluebottlecoffee.com",
+  "googleMapsUrl": "https://maps.google.com/?q=315+Linden+St+San+Francisco+CA+94102",
+  "image": "/images/san-francisco/blue-bottle-hayes-valley.jpg",
+  "tags": ["quiet", "minimalist", "single-origin", "communal-tables"],
+  "lat": 37.7756,
+  "lng": -122.4193,
+  "featured": true
+}

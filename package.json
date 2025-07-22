@@ -4,13 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "node scripts/build-cafes.js && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build-cafes": "node scripts/build-cafes.js",
+    "validate-cafes": "node scripts/validate-cafes.js"
   },
   "dependencies": {
     "daisyui": "^5.0.46",
     "fuse.js": "^7.1.0",
+    "gray-matter": "^4.0.3",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106"

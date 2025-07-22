@@ -1,0 +1,15 @@
+{
+  "name": "Stumptown Coffee",
+  "slug": "stumptown-coffee-ace-hotel",
+  "description": "Portland's famous coffee roaster with a location in NYC's trendy Ace Hotel. Industrial design with communal tables perfect for laptop work.",
+  "city": "New York",
+  "country": "United States",
+  "location": "18 W 29th St, New York, NY 10001",
+  "website": "https://www.stumptowncoffee.com",
+  "googleMapsUrl": "https://maps.google.com/?q=18+W+29th+St+New+York+NY+10001",
+  "image": "/images/new-york/stumptown-coffee-ace-hotel.jpg",
+  "tags": ["portland-roaster", "ace-hotel", "industrial-design", "communal-tables", "trendy"],
+  "lat": 40.7452,
+  "lng": -73.9890,
+  "station": "Ace-Hotel"
+}

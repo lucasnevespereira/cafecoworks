@@ -1,0 +1,15 @@
+{
+  "name": "Pablo & Rusty's",
+  "slug": "pablo-rustys-surry-hills",
+  "description": "Industrial-chic cafe with excellent flat whites and plenty of seating. Popular with freelancers and startups in Sydney's creative district.",
+  "city": "Sydney",
+  "country": "Australia",
+  "location": "61-63 Albion St, Surry Hills NSW 2010, Australia",
+  "website": "https://pabloandrustys.com.au",
+  "googleMapsUrl": "https://maps.google.com/?q=61-63+Albion+St+Surry+Hills+NSW+2010+Australia",
+  "image": "/images/sydney/pablo-rustys-surry-hills.jpg",
+  "tags": ["industrial-chic", "flat-white", "freelancers", "startups", "creative-district"],
+  "lat": -33.8886,
+  "lng": 151.2094,
+  "station": "Surry-Hills"
+}

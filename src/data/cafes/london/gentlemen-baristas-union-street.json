@@ -1,0 +1,15 @@
+{
+  "name": "The Gentlemen Baristas",
+  "slug": "gentlemen-baristas-union-street",
+  "description": "Victorian railway arch converted into a stylish coffee shop. Exposed brick walls, excellent acoustics for calls, and consistently great coffee.",
+  "city": "London",
+  "country": "United Kingdom",
+  "location": "63 Union St, London SE1 1SG, UK",
+  "website": "https://www.thegentlemenbaristas.com",
+  "googleMapsUrl": "https://maps.google.com/?q=63+Union+St+London+SE1+1SG+UK",
+  "image": "/images/london/gentlemen-baristas-union-street.jpg",
+  "tags": ["victorian-arch", "exposed-brick", "good-acoustics", "calls-friendly", "stylish"],
+  "lat": 51.5041,
+  "lng": -0.0961,
+  "station": "Union-Street"
+}
