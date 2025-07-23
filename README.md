@@ -31,7 +31,7 @@ A simple, open list of cafés for people who want to work outside the office.
 
 - Create or update a file at:
   ```
-  data/<city>/<place>.json
+  data/<city>/<cafe-slug>.json
   ```
 - Use the template: [`data/_template.json`](data/_template.json)
 
@@ -39,7 +39,7 @@ A simple, open list of cafés for people who want to work outside the office.
 
 - Place café images in:
   ```
-  public/images/<city>/<place>/
+  public/images/<city>/<cafe-slug>/
   ```
 
 ### 3. Validate Your Data

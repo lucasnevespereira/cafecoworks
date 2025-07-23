@@ -1,0 +1,18 @@
+{
+  "name": "St. Oberholz",
+  "slug": "st-oberholz",
+  "description": "A legendary coworking cafe at Rosenthaler Platz, known as Berlin’s original laptop-friendly hub. Two floors with ample space, sockets (especially upstairs), fast wifi, and a vibrant remote work community. The spot buzzes with freelancers, students, and remote teams. Expect decent coffee, snacks, and a relaxed policy for long work sessions.",
+  "city": "Berlin",
+  "country": "Germany",
+  "website": "https://www.sanktoberholz.de/",
+  "image": "/images/berlin/st-oberholz/st-oberholz.jpg",
+  "tags": [
+    "wifi",
+    "community",
+    "coffee-quality",
+    "power-outlets",
+    "spacious",
+    "creative"
+  ],
+  "address": "Rosenthaler Str. 72A, 10119 Berlin, Germany"
+}

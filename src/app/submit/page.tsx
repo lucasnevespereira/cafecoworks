@@ -80,9 +80,6 @@ export default function SubmitPage() {
 
           {/* Coming Soon Placeholder */}
           <div className="text-center py-16">
-            <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-full flex items-center justify-center">
-              <span className="text-4xl">��</span>
-            </div>
             <h3 className="text-2xl font-bold text-coffee-900 mb-4">
               Coming Soon!
             </h3>

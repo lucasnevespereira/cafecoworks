@@ -1,5 +1,24 @@
 [
   {
+    "id": "st-oberholz",
+    "name": "St. Oberholz",
+    "slug": "st-oberholz",
+    "description": "A legendary coworking cafe at Rosenthaler Platz, known as Berlin’s original laptop-friendly hub. Two floors with ample space, sockets (especially upstairs), fast wifi, and a vibrant remote work community. The spot buzzes with freelancers, students, and remote teams. Expect decent coffee, snacks, and a relaxed policy for long work sessions.",
+    "city": "Berlin",
+    "country": "Germany",
+    "address": "Rosenthaler Str. 72A, 10119 Berlin, Germany",
+    "website": "https://www.sanktoberholz.de/",
+    "image": "/images/berlin/st-oberholz/st-oberholz.jpg",
+    "tags": [
+      "wifi",
+      "community",
+      "coffee-quality",
+      "power-outlets",
+      "spacious",
+      "creative"
+    ]
+  },
+  {
     "id": "outsite-cowork-cafe",
     "name": "Outsite Cowork Cafe",
     "slug": "outsite-cowork-cafe",
@@ -8,7 +27,7 @@
     "country": "Portugal",
     "address": "Rua de S. Paulo 109, 1200-066, Lisboa, Portugal",
     "website": "https://outsidecowork.com",
-    "image": "/images/lisbon/outsite-cowork-cafe.webp",
+    "image": "/images/lisbon/outsite-cowork-cafe/outsite-cowork-cafe.webp",
     "tags": [
       "wifi",
       "quiet",
@@ -16,8 +35,25 @@
       "spacious",
       "cozy",
       "coffee-quality"
-    ],
-    "lat": 38.70843060000001,
-    "lng": -9.147107799999999
+    ]
+  },
+  {
+    "id": "nuage-cafe",
+    "name": "Nuage Café",
+    "slug": "nuage-cafe",
+    "description": "A tranquil coworking café in the Latin Quarter near the Pantheon. Designed specifically for remote workers, Nuage Café features dedicated workspaces, fast wifi, comfortable seating, a library area, and a peaceful atmosphere ideal for productivity or quiet meetings. Expect plenty of power outlets, artisan coffee, and a quiet, studious environment with light snacks available.",
+    "city": "Paris",
+    "country": "France",
+    "address": "14 Rue des Carmes, 75005 Paris, France",
+    "website": "https://www.nuagecafe.fr",
+    "image": "/images/paris/nuage-cafe/nuage-cafe.webp",
+    "tags": [
+      "wifi",
+      "quiet",
+      "power-outlets",
+      "library",
+      "remote-work",
+      "coffee-quality"
+    ]
   }
 ]
