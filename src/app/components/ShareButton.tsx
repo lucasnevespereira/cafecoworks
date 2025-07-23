@@ -61,7 +61,7 @@ const ShareButton: React.FC<ShareButtonProps> = ({
       type="button"
       disabled={!url}
     >
-      <span className="text-lg mr-2">��</span>
+      <span className="text-lg mr-2">🔗</span>
       Share
     </button>
   );
