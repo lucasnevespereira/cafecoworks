@@ -1,22 +1,33 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 type ShareButtonProps = {
-  url?: string;
   title?: string;
   text?: string;
   className?: string;
 };
 
 const ShareButton: React.FC<ShareButtonProps> = ({
-  url = typeof window !== "undefined" ? window.location.href : "",
   title = typeof document !== "undefined" ? document.title : "Share",
   text = "Check out this cafe!",
   className = "",
 }) => {
+  const [url, setUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setUrl(window.location.href);
+    }
+  }, []);
+
   const handleShare = async () => {
+    if (!url) {
+      toast.error("URL not available for sharing.");
+      return;
+    }
+
     const shareData = { title, text, url };
 
     if (navigator.share) {
@@ -44,6 +55,7 @@ const ShareButton: React.FC<ShareButtonProps> = ({
       onClick={handleShare}
       aria-label="Share this cafe"
       type="button"
+      disabled={!url}
     >
       <span className="text-lg mr-2">🔗</span>
       Share

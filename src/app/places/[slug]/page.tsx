@@ -5,6 +5,7 @@ import { getCafesData } from "@/src/lib/cafes";
 import CafeImage from "../../components/CafeImage";
 import CafeMap from "../../components/CafeMap";
 import ShareButton from "../../components/ShareButton";
+import DirectionsButton from "../../components/DirectionsButton";
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -138,19 +139,12 @@ export default async function CafePage({ params }: PageProps) {
 
             {/* Action Buttons */}
             <div className="grid grid-cols-2 gap-4">
-              {cafe.googleMapsUrl && (
-                <Link
-                  href={cafe.googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary rounded-2xl px-6 py-3 text-center"
-                >
-                  <span className="text-lg mr-2">📍</span>
-                  Get Directions
-                </Link>
-              )}
+              <DirectionsButton
+                latitude={cafe.lat}
+                longitude={cafe.lng}
+                address={cafe.address}
+              />
               <ShareButton
-                url={`https://cafecoworks.com/places/${cafe.slug}`}
                 title={`${cafe.name} - ${cafe.city}`}
                 text={`Check out this cafe! ${cafe.description}`}
               />
@@ -180,10 +174,10 @@ export default async function CafePage({ params }: PageProps) {
           )}
         </div>
 
-        {/* Ad Banner */}
-        <div className="mb-16">
+        {/* Ad Banner - disabled */}
+        {/* <div className="mb-16">
           <AdBanner />
-        </div>
+        </div> */}
 
         {/* Related Cafes */}
         {relatedCafes.length > 0 && (

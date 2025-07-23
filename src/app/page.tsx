@@ -52,7 +52,9 @@ export default async function Home() {
               </div>
             </div>
             <div className="card-coffee p-6">
-              <div className="text-3xl font-bold text-coffee-900 mb-1">5+</div>
+              <div className="text-3xl font-bold text-coffee-900 mb-1">
+                {new Set(cafes.map((cafe) => cafe.country)).size - 1}+
+              </div>
               <div className="text-sm text-coffee-warm uppercase tracking-wider">
                 Countries
               </div>
@@ -111,8 +113,16 @@ export default async function Home() {
                 href={`/places/${cafe.slug}`}
                 className="card-coffee overflow-hidden hover:-translate-y-2 transition-all duration-300 group"
               >
-                <div className="aspect-[4/3] coffee-gradient flex items-center justify-center">
-                  <div className="text-6xl opacity-30">☕</div>
+                <div className="aspect-[4/3] coffee-gradient flex items-center justify-center relative">
+                  {cafe.image ? (
+                    <img
+                      src={cafe.image}
+                      alt={cafe.name}
+                      className="object-cover w-full h-full absolute inset-0"
+                    />
+                  ) : (
+                    <div className="text-6xl opacity-30">☕</div>
+                  )}
                 </div>
 
                 <div className="p-6">

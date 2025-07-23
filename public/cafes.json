@@ -6,10 +6,8 @@
     "description": "A detailed description of the cafe, its atmosphere, and why it's great for remote work. Include information about wifi, seating, noise level, etc.",
     "city": "Lisboa",
     "country": "Portugal",
-    "location": "Rua de S. Paulo 109, 1200-066, Lisboa, Portugal",
     "address": "Rua de S. Paulo 109, 1200-066, Lisboa, Portugal",
     "website": "https://outsidecowork.com",
-    "googleMapsUrl": "https://maps.app.goo.gl/JecXFyVfW6e8AFTeA",
     "image": "/images/lisbon/outsite-cowork-cafe.webp",
     "tags": [
       "wifi",

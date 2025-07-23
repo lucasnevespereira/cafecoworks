@@ -143,7 +143,15 @@ export default async function CityPage({ params }: PageProps) {
                   className="card-coffee overflow-hidden hover:-translate-y-2 transition-all duration-300 group"
                 >
                   <div className="aspect-[4/3] coffee-gradient flex items-center justify-center relative">
-                    <div className="text-6xl opacity-30">☕</div>
+                    {cafe.image ? (
+                      <img
+                        src={cafe.image}
+                        alt={cafe.name}
+                        className="object-cover w-full h-full absolute inset-0"
+                      />
+                    ) : (
+                      <div className="text-6xl opacity-30">☕</div>
+                    )}
                     {cafe.featured && (
                       <div className="absolute top-4 left-4 badge-golden badge-sm">
                         Featured
