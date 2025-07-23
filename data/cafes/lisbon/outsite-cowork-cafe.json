@@ -14,5 +14,8 @@
     "cozy",
     "coffee-quality"
   ],
-  "address": "Rua de S. Paulo 109, 1200-066, Lisboa, Portugal"
+  "address": "Rua de S. Paulo 109, 1200-066, Lisboa, Portugal",
+  "id": "outsite-cowork-cafe",
+  "lat": 38.70843060000001,
+  "lng": -9.147107799999999
 }

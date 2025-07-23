@@ -30,7 +30,7 @@ async function buildCafesData(): Promise<number> {
       if (!cafeRaw.address && cafeRaw.location) cafeRaw.address = cafeRaw.location;
 
     // Enrich with lat/lng if missing
-    if ((!cafeRaw.lat || !cafeRaw.lng) && cafeRaw.googleMapsUrl) {
+    if ((!cafeRaw.lat || !cafeRaw.lng)) {
       console.log(`🌍 Geocoding: ${cafeRaw.name}`);
       if (!process.env.GOOGLE_MAPS_API_KEY) {
         console.error("❌ Missing GOOGLE_MAPS_API_KEY");

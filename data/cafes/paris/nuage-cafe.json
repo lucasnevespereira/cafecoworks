@@ -14,5 +14,8 @@
     "remote-work",
     "coffee-quality"
   ],
-  "address": "14 Rue des Carmes, 75005 Paris, France"
+  "address": "14 Rue des Carmes, 75005 Paris, France",
+  "id": "nuage-cafe",
+  "lat": 48.84927829999999,
+  "lng": 2.3473759
 }

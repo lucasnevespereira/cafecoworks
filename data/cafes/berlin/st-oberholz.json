@@ -14,5 +14,8 @@
     "spacious",
     "creative"
   ],
-  "address": "Rosenthaler Str. 72A, 10119 Berlin, Germany"
+  "address": "Rosenthaler Str. 72A, 10119 Berlin, Germany",
+  "id": "st-oberholz",
+  "lat": 52.5295156,
+  "lng": 13.40191
 }

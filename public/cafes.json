@@ -16,7 +16,9 @@
       "power-outlets",
       "spacious",
       "creative"
-    ]
+    ],
+    "lat": 52.5295156,
+    "lng": 13.40191
   },
   {
     "id": "outsite-cowork-cafe",
@@ -35,7 +37,9 @@
       "spacious",
       "cozy",
       "coffee-quality"
-    ]
+    ],
+    "lat": 38.70843060000001,
+    "lng": -9.147107799999999
   },
   {
     "id": "nuage-cafe",
@@ -54,6 +58,8 @@
       "library",
       "remote-work",
       "coffee-quality"
-    ]
+    ],
+    "lat": 48.84927829999999,
+    "lng": 2.3473759
   }
 ]
