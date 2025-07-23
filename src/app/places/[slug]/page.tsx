@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import AdBanner from "@/src/app/components/AdBanner";
 import { getCafesData } from "@/src/lib/cafes";
 import CafeImage from "../../components/CafeImage";
-
+import CafeMap from "../../components/CafeMap";
+import ShareButton from "../../components/ShareButton";
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -80,15 +81,6 @@ export default async function CafePage({ params }: PageProps) {
         {/* Hero Section */}
         <div className="grid lg:grid-cols-5 gap-12 mb-16">
           {/* Image */}
-          {/* <div className="lg:col-span-3">
-            <div className="aspect-[4/3] coffee-gradient rounded-3xl overflow-hidden flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-8xl mb-4 opacity-40">☕</div>
-                <div className="text-lg text-coffee-warm">{cafe.name}</div>
-              </div>
-            </div>
-          </div> */}
-
           <div className="lg:col-span-3">
             <div className="aspect-[4/3] coffee-gradient rounded-3xl overflow-hidden flex items-center justify-center relative">
               <CafeImage cafeImage={cafe.image} cafeName={cafe.name} />
@@ -138,7 +130,7 @@ export default async function CafePage({ params }: PageProps) {
                 </p>
                 {cafe.lat && cafe.lng && (
                   <div className="text-sm text-coffee-warm/70">
-                    {cafe.lat}, {cafe.lng}
+                    {cafe.lat.toFixed(2)}, {cafe.lng.toFixed(2)}
                   </div>
                 )}
               </div>
@@ -146,14 +138,22 @@ export default async function CafePage({ params }: PageProps) {
 
             {/* Action Buttons */}
             <div className="grid grid-cols-2 gap-4">
-              <button className="btn btn-primary rounded-2xl px-6 py-3 text-center">
-                <span className="text-lg mr-2">📍</span>
-                Get Directions
-              </button>
-              <button className="btn btn-coffee rounded-2xl px-6 py-3 text-center">
-                <span className="text-lg mr-2">🔗</span>
-                Share
-              </button>
+              {cafe.googleMapsUrl && (
+                <Link
+                  href={cafe.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary rounded-2xl px-6 py-3 text-center"
+                >
+                  <span className="text-lg mr-2">📍</span>
+                  Get Directions
+                </Link>
+              )}
+              <ShareButton
+                url={`https://cafecoworks.com/places/${cafe.slug}`}
+                title={`${cafe.name} - ${cafe.city}`}
+                text={`Check out this cafe! ${cafe.description}`}
+              />
             </div>
           </div>
         </div>
@@ -163,17 +163,21 @@ export default async function CafePage({ params }: PageProps) {
           <h2 className="text-3xl font-bold text-coffee-900 mb-8 text-center text-display">
             Location Map
           </h2>
-          <div className="aspect-[2/1] coffee-gradient rounded-3xl overflow-hidden">
-            <div className="w-full h-full flex flex-col items-center justify-center text-coffee-warm">
-              <div className="text-6xl mb-6">🗺️</div>
-              <div className="text-xl font-medium mb-2 text-coffee-900">
-                Interactive Map
-              </div>
-              <div className="text-base">
-                Google Maps: {cafe.lat}, {cafe.lng}
+
+          {cafe.lat && cafe.lng ? (
+            <div className="aspect-[2/1] rounded-3xl overflow-hidden">
+              <CafeMap name={cafe.name} lat={cafe.lat} lng={cafe.lng} />
+            </div>
+          ) : (
+            <div className="aspect-[2/1] coffee-gradient rounded-3xl overflow-hidden">
+              <div className="w-full h-full flex flex-col items-center justify-center text-coffee-warm">
+                <div className="text-6xl mb-6">🗺️</div>
+                <div className="text-xl font-medium mb-2 text-coffee-900">
+                  Map coming soon
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Ad Banner */}

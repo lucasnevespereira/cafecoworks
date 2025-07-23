@@ -2,12 +2,15 @@ import fs from 'fs';
 import path from 'path';
 import { Cafe, CafeSchema } from '@/src/types/cafe';
 import { getJsonFiles } from '@/src/lib/json';
+import { getLatLngFromGoogleUrl } from '@/src/lib/geo';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const cafesDir = path.join(__dirname, '../data/cafes');
 const publicDir = path.join(__dirname, '../public');
 
 // Build the aggregated cafes data
-function buildCafesData(): number {
+async function buildCafesData(): Promise<number> {
   const outputFile = path.join(publicDir, 'cafes.json');
 
   console.log('🔍 Scanning for café data files...');
@@ -25,6 +28,28 @@ function buildCafesData(): number {
       if (!cafeRaw.id) cafeRaw.id = cafeRaw.slug;
       // Add address if missing
       if (!cafeRaw.address && cafeRaw.location) cafeRaw.address = cafeRaw.location;
+
+    // Enrich with lat/lng if missing
+    if ((!cafeRaw.lat || !cafeRaw.lng) && cafeRaw.googleMapsUrl) {
+      console.log(`🌍 Geocoding: ${cafeRaw.name}`);
+      if (!process.env.GOOGLE_MAPS_API_KEY) {
+        console.error("❌ Missing GOOGLE_MAPS_API_KEY");
+        console.log("Skipping geocoding for this cafe");
+        continue;
+      }
+      const coords = await getLatLngFromGoogleUrl(cafeRaw.address, process.env.GOOGLE_MAPS_API_KEY);
+      if (coords) {
+        cafeRaw.lat = coords.lat;
+        cafeRaw.lng = coords.lng;
+
+        // Write back enriched file
+        fs.writeFileSync(filePath, JSON.stringify(cafeRaw, null, 2), 'utf8');
+        console.log(`📍 Added lat/lng to ${cafeRaw.name}`);
+      } else {
+        console.warn(`⚠️  Could not geocode ${cafeRaw.name}`);
+      }
+    }
+
       // Validate with Zod
       const parsed = CafeSchema.safeParse(cafeRaw);
       if (!parsed.success) {
@@ -63,15 +88,13 @@ function buildCafesData(): number {
   return cafes.length;
 }
 
-if (require.main === module) {
-  try {
-    const count = buildCafesData();
-    console.log(`🎉 Successfully built cafes.json with ${count} cafés`);
-    process.exit(0);
-  } catch (error) {
-    console.error('❌ Build failed:', error);
-    process.exit(1);
-  }
+
+
+
+
+async function main() {
+  const count = await buildCafesData();
+  console.log(`🎉 Successfully built cafes.json with ${count} cafés`);
 }
 
-export { buildCafesData };
+main();
