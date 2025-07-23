@@ -1,0 +1,14 @@
+{
+  "name": "Cafe Name",
+  "slug": "cafe-slug",
+  "description": "Cafe description",
+  "city": "Cafe City",
+  "country": "Cafe Country",
+  "address": "Cafe Address",
+  "website": "https://cafe.com",
+  "image": "/images/cafe-slug.jpg",
+  "tags": ["tag1", "tag2", "tag3"],
+  "lat": 0,
+  "lng": 0,
+  "station": "Cafe Station"
+}

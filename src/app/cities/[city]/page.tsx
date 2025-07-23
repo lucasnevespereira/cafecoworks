@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import cafes from "../../../data/cafes.json";
-import AdBanner from "../../components/AdBanner";
+import AdBanner from "@/src/app/components/AdBanner";
+import { getCafesData } from "@/src/lib/cafes";
 
 interface PageProps {
   params: Promise<{ city: string }>;
@@ -9,7 +9,8 @@ interface PageProps {
 
 // Generate static params for all cities
 export async function generateStaticParams() {
-  const cities = Array.from(new Set(cafes.map((cafe) => cafe.city)));
+  const cafes = await getCafesData();
+  const cities = Array.from(new Set(cafes?.map((cafe) => cafe.city) || []));
   return cities.map((city) => ({
     city: city.toLowerCase().replace(" ", "-"),
   }));
@@ -17,6 +18,7 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps) {
+  const cafes = await getCafesData();
   const { city } = await params;
   const cityName = city
     .replace("-", " ")
@@ -27,12 +29,12 @@ export async function generateMetadata({ params }: PageProps) {
 
   if (cityCafes.length === 0) {
     return {
-      title: "City Not Found | cafeco.works",
+      title: "City Not Found | cafecoworks",
     };
   }
 
   return {
-    title: `Best Coworking Cafes in ${cityName} | cafeco.works`,
+    title: `Best Coworking Cafes in ${cityName} | cafecoworks`,
     description: `Discover ${cityCafes.length} amazing coworking cafes in ${cityName}. Find the perfect workspace for remote work and digital nomads.`,
     openGraph: {
       title: `Best Coworking Cafes in ${cityName}`,
@@ -43,6 +45,7 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function CityPage({ params }: PageProps) {
+  const cafes = await getCafesData();
   const { city } = await params;
   const cityName = city
     .replace("-", " ")
@@ -140,7 +143,15 @@ export default async function CityPage({ params }: PageProps) {
                   className="card-coffee overflow-hidden hover:-translate-y-2 transition-all duration-300 group"
                 >
                   <div className="aspect-[4/3] coffee-gradient flex items-center justify-center relative">
-                    <div className="text-6xl opacity-30">☕</div>
+                    {cafe.image ? (
+                      <img
+                        src={cafe.image}
+                        alt={cafe.name}
+                        className="object-cover w-full h-full absolute inset-0"
+                      />
+                    ) : (
+                      <div className="text-6xl opacity-30">☕</div>
+                    )}
                     {cafe.featured && (
                       <div className="absolute top-4 left-4 badge-golden badge-sm">
                         Featured

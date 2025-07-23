@@ -255,3 +255,46 @@
     color: theme('colors.coffee.900');
   }
 }
+
+
+
+/* --- Custom Leaflet Styles --- */
+.leaflet-container {
+  border-radius: 0.75rem; /* match your card radius */
+  box-shadow: 0 4px 6px -1px rgba(44, 24, 16, 0.1), 0 2px 4px -1px rgba(44, 24, 16, 0.06);
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  background: #fffef9; /* base-100 */
+}
+
+.leaflet-control-zoom {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(44, 24, 16, 0.08);
+  background: #faf7f0; /* cream-100 */
+  border: 1px solid #e6d5b7; /* coffee-300 */
+}
+
+.leaflet-control-zoom a {
+  color: #2c1810; /* coffee-900 */
+  background: #faf7f0;
+  border-bottom: 1px solid #e6d5b7;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.leaflet-control-zoom a:hover {
+  background: #f4d03f; /* golden-300 */
+  color: #2c1810;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #fffef9;
+  color: #2c1810;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(44, 24, 16, 0.12);
+  border: 1px solid #e6d5b7;
+}
+
+.leaflet-popup-tip {
+  background: #fffef9;
+  border: 1px solid #e6d5b7;
+}

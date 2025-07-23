@@ -11,13 +11,13 @@ export default function Header() {
         >
           <Image
             src="/logo.png"
-            alt="cafeco.works"
+            alt="cafecoworks"
             width={36}
             height={36}
             className="rounded-lg"
           />
           <span className="text-2xl font-bold logo text-coffee-900">
-            cafeco.works
+            cafecoworks
           </span>
         </Link>
       </div>

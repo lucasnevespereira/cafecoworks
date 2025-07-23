@@ -3,25 +3,41 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Fuse from "fuse.js";
-import cafes from "../../data/cafes.json";
 import Link from "next/link";
-
-const fuse = new Fuse(cafes, {
-  keys: ["name", "city", "country", "tags"],
-  threshold: 0.4,
-  includeScore: true,
-});
+import { Cafe } from "@/src/types/cafe";
 
 export default function SearchBar() {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<{ item: (typeof cafes)[0] }[]>([]);
+  const [results, setResults] = useState<{ item: Cafe }[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [fuse, setFuse] = useState<Fuse<Cafe> | null>(null);
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Load cafes data on component mount
   useEffect(() => {
-    if (query.length > 1) {
+    const loadCafes = async () => {
+      try {
+        const response = await fetch("/cafes.json");
+        const cafesData: Cafe[] = await response.json();
+
+        const fuseInstance = new Fuse(cafesData, {
+          keys: ["name", "city", "country", "tags"],
+          threshold: 0.4,
+          includeScore: true,
+        });
+        setFuse(fuseInstance);
+      } catch (error) {
+        console.error("Failed to load cafes data:", error);
+      }
+    };
+
+    loadCafes();
+  }, []);
+
+  useEffect(() => {
+    if (query.length > 1 && fuse) {
       setIsLoading(true);
       // Add slight delay for better UX
       const timeoutId = setTimeout(() => {
@@ -37,7 +53,7 @@ export default function SearchBar() {
       setIsOpen(false);
       setIsLoading(false);
     }
-  }, [query]);
+  }, [query, fuse]);
 
   const handleSelect = (slug: string) => {
     router.push(`/places/${slug}`);
