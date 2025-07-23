@@ -10,17 +10,19 @@ type ShareButtonProps = {
 };
 
 const ShareButton: React.FC<ShareButtonProps> = ({
-  title = typeof document !== "undefined" ? document.title : "Share",
+  title: propTitle,
   text = "Check out this cafe!",
   className = "",
 }) => {
   const [url, setUrl] = useState<string | null>(null);
+  const [title, setTitle] = useState<string>("Share");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       setUrl(window.location.href);
+      setTitle(propTitle || document.title);
     }
-  }, []);
+  }, [propTitle]);
 
   const handleShare = async () => {
     if (!url) {
@@ -59,7 +61,7 @@ const ShareButton: React.FC<ShareButtonProps> = ({
       type="button"
       disabled={!url}
     >
-      <span className="text-lg mr-2">🔗</span>
+      <span className="text-lg mr-2">��</span>
       Share
     </button>
   );
