@@ -35,13 +35,15 @@ const ShareButton: React.FC<ShareButtonProps> = ({
         await navigator.share(shareData);
         toast.success("Shared!");
       } catch (err) {
-        // User cancelled or error
+        console.error(err);
+        toast.error("Failed to share.");
       }
     } else if (navigator.clipboard) {
       try {
         await navigator.clipboard.writeText(url);
         toast.success("Link copied to clipboard!");
       } catch (err) {
+        console.error(err);
         toast.error("Failed to copy link.");
       }
     } else {

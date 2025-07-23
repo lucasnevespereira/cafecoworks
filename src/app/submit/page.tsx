@@ -84,9 +84,10 @@ export default function SubmitPage() {
               Coming Soon!
             </h3>
             <p className="text-lg text-coffee-warm mb-8 max-w-2xl mx-auto leading-relaxed">
-              We're working hard to build the submission form. In the meantime,
+              $
+              {`We're working hard to build the submission form. In the meantime,
               you can check out our GitHub repository to see the project in
-              development and contribute to the codebase.
+              development and contribute to the codebase.`}
             </p>
             <a
               href="https://github.com/lucasnevespereira/cafecoworks"
