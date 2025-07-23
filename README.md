@@ -2,7 +2,7 @@
   <img src="public/logo.png" alt="CafeCoWorks Logo" width="120" />
 </p>
 
-# ☕️ CafeCoWorks
+# ☕️ cafecoworks
 
 A simple, open list of cafés for people who want to work outside the office.
 

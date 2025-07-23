@@ -29,12 +29,12 @@ export async function generateMetadata({ params }: PageProps) {
 
   if (cityCafes.length === 0) {
     return {
-      title: "City Not Found | cafeco.works",
+      title: "City Not Found | cafecoworks",
     };
   }
 
   return {
-    title: `Best Coworking Cafes in ${cityName} | cafeco.works`,
+    title: `Best Coworking Cafes in ${cityName} | cafecoworks`,
     description: `Discover ${cityCafes.length} amazing coworking cafes in ${cityName}. Find the perfect workspace for remote work and digital nomads.`,
     openGraph: {
       title: `Best Coworking Cafes in ${cityName}`,

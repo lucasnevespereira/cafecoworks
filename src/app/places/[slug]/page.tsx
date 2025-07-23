@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import AdBanner from "@/src/app/components/AdBanner";
 import { getCafesData } from "@/src/lib/cafes";
 import CafeImage from "../../components/CafeImage";
 import CafeMap from "../../components/CafeMap";
@@ -26,12 +25,12 @@ export async function generateMetadata({ params }: PageProps) {
 
   if (!cafe) {
     return {
-      title: "Cafe Not Found | cafeco.works",
+      title: "Cafe Not Found | cafecoworks",
     };
   }
 
   return {
-    title: `${cafe.name} - ${cafe.city} | cafeco.works`,
+    title: `${cafe.name} - ${cafe.city} | cafecoworks`,
     description: cafe.description,
     openGraph: {
       title: `${cafe.name} - ${cafe.city}`,
