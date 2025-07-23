@@ -4,25 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Fuse from "fuse.js";
 import Link from "next/link";
-
-interface Cafe {
-  id: string;
-  name: string;
-  slug: string;
-  description: string;
-  city: string;
-  country: string;
-  location: string;
-  address?: string;
-  website?: string;
-  googleMapsUrl?: string;
-  image: string;
-  tags: string[];
-  lat?: number;
-  lng?: number;
-  station?: string;
-  featured?: boolean;
-}
+import { Cafe } from "@/src/types/cafe";
 
 export default function SearchBar() {
   const [query, setQuery] = useState("");

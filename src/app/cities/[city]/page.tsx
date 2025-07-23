@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import cafes from "../../../data/cafes.json";
-import AdBanner from "../../components/AdBanner";
+import AdBanner from "@/src/app/components/AdBanner";
+import { getCafesData } from "@/src/lib/cafes";
 
 interface PageProps {
   params: Promise<{ city: string }>;
@@ -9,7 +9,8 @@ interface PageProps {
 
 // Generate static params for all cities
 export async function generateStaticParams() {
-  const cities = Array.from(new Set(cafes.map((cafe) => cafe.city)));
+  const cafes = await getCafesData();
+  const cities = Array.from(new Set(cafes?.map((cafe) => cafe.city) || []));
   return cities.map((city) => ({
     city: city.toLowerCase().replace(" ", "-"),
   }));
@@ -17,6 +18,7 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps) {
+  const cafes = await getCafesData();
   const { city } = await params;
   const cityName = city
     .replace("-", " ")
@@ -43,6 +45,7 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function CityPage({ params }: PageProps) {
+  const cafes = await getCafesData();
   const { city } = await params;
   const cityName = city
     .replace("-", " ")

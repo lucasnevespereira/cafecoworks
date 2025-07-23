@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import cafes from "../../../data/cafes.json";
-import AdBanner from "../../components/AdBanner";
+import AdBanner from "@/src/app/components/AdBanner";
+import { getCafesData } from "@/src/lib/cafes";
+import CafeImage from "../../components/CafeImage";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -9,6 +10,7 @@ interface PageProps {
 
 // Generate static params for all cafes
 export async function generateStaticParams() {
+  const cafes = await getCafesData();
   return cafes.map((cafe) => ({
     slug: cafe.slug,
   }));
@@ -16,6 +18,7 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps) {
+  const cafes = await getCafesData();
   const { slug } = await params;
   const cafe = cafes.find((c) => c.slug === slug);
 
@@ -37,6 +40,7 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function CafePage({ params }: PageProps) {
+  const cafes = await getCafesData();
   const { slug } = await params;
   const cafe = cafes.find((c) => c.slug === slug);
 
@@ -76,12 +80,18 @@ export default async function CafePage({ params }: PageProps) {
         {/* Hero Section */}
         <div className="grid lg:grid-cols-5 gap-12 mb-16">
           {/* Image */}
-          <div className="lg:col-span-3">
+          {/* <div className="lg:col-span-3">
             <div className="aspect-[4/3] coffee-gradient rounded-3xl overflow-hidden flex items-center justify-center">
               <div className="text-center">
                 <div className="text-8xl mb-4 opacity-40">☕</div>
                 <div className="text-lg text-coffee-warm">{cafe.name}</div>
               </div>
+            </div>
+          </div> */}
+
+          <div className="lg:col-span-3">
+            <div className="aspect-[4/3] coffee-gradient rounded-3xl overflow-hidden flex items-center justify-center relative">
+              <CafeImage cafeImage={cafe.image} cafeName={cafe.name} />
             </div>
           </div>
 
@@ -106,7 +116,7 @@ export default async function CafePage({ params }: PageProps) {
               {/* Tags */}
               <div className="flex flex-wrap gap-2">
                 {cafe.tags.map((tag) => (
-                  <span key={tag} className="badge-coffee">
+                  <span key={tag} className="badge-golden">
                     {tag}
                   </span>
                 ))}
@@ -126,9 +136,11 @@ export default async function CafePage({ params }: PageProps) {
                 <p className="font-medium text-coffee-900">
                   {cafe.city}, {cafe.country}
                 </p>
-                <div className="text-sm text-coffee-warm/70">
-                  {cafe.lat}, {cafe.lng}
-                </div>
+                {cafe.lat && cafe.lng && (
+                  <div className="text-sm text-coffee-warm/70">
+                    {cafe.lat}, {cafe.lng}
+                  </div>
+                )}
               </div>
             </div>
 
