@@ -12,11 +12,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth transitions for theme switching */
-* {
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-
 /* Custom scrollbar for webkit browsers */
 ::-webkit-scrollbar {
   width: 6px;
@@ -72,81 +67,32 @@
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-/* Simplified coffee gradients - only cream to golden */
+/* Simplified coffee gradients */
 .coffee-gradient {
   background: linear-gradient(135deg, theme('colors.cream.50') 0%, theme('colors.cream.100') 100%);
 }
 
-.warm-gradient {
-  background: linear-gradient(135deg, theme('colors.cream.100') 0%, theme('colors.golden.100') 100%);
-}
-
-/* Enhanced coffee text gradient for brand accent */
-.text-golden-gradient {
-  background: linear-gradient(135deg,
-    theme('colors.golden.300') 0%,
-    theme('colors.golden.400') 25%,
-    theme('colors.accent') 50%,
-    theme('colors.golden.500') 75%,
-    theme('colors.coffee.600') 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% 200%;
-  animation: shimmer 3s ease-in-out infinite;
-}
-
-/* Shimmer animation for the gradient */
-@keyframes shimmer {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-/* Alternative coffee brand gradient */
+/* Coffee brand text — solid gradient, no animation */
 .text-coffee-brand {
   background: linear-gradient(135deg,
-    theme('colors.coffee.600') 0%,
-    theme('colors.golden.400') 30%,
-    theme('colors.accent') 60%,
+    theme('colors.coffee.700') 0%,
+    theme('colors.coffee.500') 50%,
     theme('colors.coffee.700') 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 200% 200%;
-  animation: shimmer 4s ease-in-out infinite;
-  filter: drop-shadow(0 2px 4px rgba(44, 24, 16, 0.1));
-}
-
-/* Warm coffee accent gradient */
-.text-warm-accent {
-  background: linear-gradient(135deg,
-    theme('colors.cream.400') 0%,
-    theme('colors.golden.300') 40%,
-    theme('colors.coffee.500') 70%,
-    theme('colors.golden.400') 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% 200%;
-  animation: shimmer 3.5s ease-in-out infinite;
 }
 
 /* Enhanced component styling */
 .navbar-coffee {
-  @apply bg-base-100 border-b border-coffee-200;
-  backdrop-filter: blur(8px);
+  @apply border-b border-coffee-200;
+  backdrop-filter: blur(12px);
   background-color: rgba(255, 254, 249, 0.95);
 }
 
 .breadcrumbs-coffee .breadcrumbs > ul > li + *:before {
-  content: "☕";
+  content: "/";
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   opacity: 0.4;
@@ -161,18 +107,11 @@
   @apply bg-golden-100 border-golden-300 text-golden-800;
 }
 
-/* Simplified CTA Section */
-.cta-coffee {
-  background: theme('colors.cream.100');
-  border: 1px solid theme('colors.coffee.200');
-}
-
 /* Footer with simple coffee background */
 .footer-coffee {
   background: theme('colors.coffee.900');
 }
 
-/* Ensure footer text is properly visible */
 .footer-coffee .logo {
   color: theme('colors.cream.100');
   font-family: var(--font-space-grotesk), system-ui, sans-serif;
@@ -256,33 +195,47 @@
   }
 }
 
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
 
 /* --- Custom Leaflet Styles --- */
 .leaflet-container {
-  border-radius: 0.75rem; /* match your card radius */
+  border-radius: 0.75rem;
   box-shadow: 0 4px 6px -1px rgba(44, 24, 16, 0.1), 0 2px 4px -1px rgba(44, 24, 16, 0.06);
   font-family: var(--font-space-grotesk), system-ui, sans-serif;
-  background: #fffef9; /* base-100 */
+  background: #fffef9;
 }
 
 .leaflet-control-zoom {
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(44, 24, 16, 0.08);
-  background: #faf7f0; /* cream-100 */
-  border: 1px solid #e6d5b7; /* coffee-300 */
+  background: #faf7f0;
+  border: 1px solid #e6d5b7;
 }
 
 .leaflet-control-zoom a {
-  color: #2c1810; /* coffee-900 */
+  color: #2c1810;
   background: #faf7f0;
   border-bottom: 1px solid #e6d5b7;
   font-weight: 600;
   transition: background 0.2s;
 }
 .leaflet-control-zoom a:hover {
-  background: #f4d03f; /* golden-300 */
+  background: #f4d03f;
   color: #2c1810;
 }
 

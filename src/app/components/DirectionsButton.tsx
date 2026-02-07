@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Navigation } from "lucide-react";
 
 type Props = {
   latitude?: number;
@@ -20,7 +21,7 @@ export default function DirectionsButton({
   } else if (address) {
     url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
   } else {
-    return null; // no valid destination
+    return null;
   }
 
   return (
@@ -28,10 +29,10 @@ export default function DirectionsButton({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="btn btn-primary rounded-2xl px-6 py-3 text-center"
+      className="btn btn-primary rounded-xl text-sm text-center flex items-center justify-center gap-2"
     >
-      <span className="text-lg mr-2">📍</span>
-      Get Directions
+      <Navigation size={14} />
+      Directions
     </Link>
   );
 }

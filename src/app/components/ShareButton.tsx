@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { Share2 } from "lucide-react";
 
 type ShareButtonProps = {
   title?: string;
@@ -38,12 +39,11 @@ const ShareButton: React.FC<ShareButtonProps> = ({
         toast.success("Shared!");
       } catch (err) {
         console.error(err);
-        toast.error("Failed to share.");
       }
     } else if (navigator.clipboard) {
       try {
         await navigator.clipboard.writeText(url);
-        toast.success("Link copied to clipboard!");
+        toast.success("Link copied!");
       } catch (err) {
         console.error(err);
         toast.error("Failed to copy link.");
@@ -55,13 +55,13 @@ const ShareButton: React.FC<ShareButtonProps> = ({
 
   return (
     <button
-      className={`btn btn-coffee rounded-2xl px-6 py-3 text-center ${className}`}
+      className={`btn btn-coffee rounded-xl text-sm text-center flex items-center justify-center gap-2 ${className}`}
       onClick={handleShare}
       aria-label="Share this cafe"
       type="button"
       disabled={!url}
     >
-      <span className="text-lg mr-2">🔗</span>
+      <Share2 size={14} />
       Share
     </button>
   );

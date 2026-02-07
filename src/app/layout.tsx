@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Head from "next/head";
 import { Space_Grotesk } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -42,10 +42,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="cafeco" suppressHydrationWarning>
-      <Head>
-        <link rel="canonical" href="https://cafecoworks.com" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
       <body
         className={`${spaceGrotesk.variable} antialiased font-[family-name:var(--font-space-grotesk)]`}
         suppressHydrationWarning
@@ -53,6 +49,16 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Toaster
+          position="bottom-center"
+          toastOptions={{
+            style: {
+              background: "#2c1810",
+              color: "#fffef9",
+              borderRadius: "0.75rem",
+            },
+          }}
+        />
       </body>
     </html>
   );
