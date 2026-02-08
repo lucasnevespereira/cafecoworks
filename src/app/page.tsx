@@ -9,7 +9,7 @@ export default async function Home() {
 
   const cities = Array.from(new Set(cafes.map((cafe) => cafe.city))).slice(
     0,
-    6
+    6,
   );
   const countries = new Set(cafes.map((cafe) => cafe.country)).size;
   const featuredCafes = cafes.slice(0, 3);
@@ -114,7 +114,7 @@ export default async function Home() {
       </section>
 
       {/* Featured Cafes */}
-      <section className="py-16 px-6">
+      <section className="py-16 px-6 bg-base-100">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-10">
             <div>
